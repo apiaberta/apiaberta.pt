@@ -19,10 +19,17 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus('sending')
-    // Mock submission - replace with real endpoint
-    await new Promise((resolve) => setTimeout(resolve, 1200))
-    // In production, POST to https://formspree.io/f/REPLACE_WITH_ID
-    setStatus('success')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      if (!res.ok) throw new Error('Server error')
+      setStatus('success')
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
