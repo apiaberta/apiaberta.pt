@@ -6,6 +6,9 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Contribute from './pages/Contribute'
 import ContactPage from './pages/ContactPage'
+import Dados from './pages/Dados'
+import DadosTempo from './pages/DadosTempo'
+import DadosCombustivel from './pages/DadosCombustivel'
 
 export default function App() {
   return (
@@ -18,6 +21,9 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/contribute" element={<Contribute />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/dados" element={<Dados />} />
+              <Route path="/dados/tempo" element={<DadosTempo />} />
+              <Route path="/dados/combustivel" element={<DadosCombustivel />} />
             </Routes>
           </main>
           <Footer />
