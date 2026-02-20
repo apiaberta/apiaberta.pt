@@ -68,6 +68,9 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <div style={{ display: 'none', alignItems: 'center', gap: '2rem' }} className="desktop-nav">
+            <Link to="/dados" className="nav-link" style={{ textDecoration: 'none' }}>
+              Dados
+            </Link>
             <button onClick={() => scrollTo('problem')} className="nav-link">
               {t('nav.problem')}
             </button>
@@ -124,6 +127,24 @@ export default function Navbar() {
               gap: '0.5rem',
             }}
           >
+            <Link
+              to="/dados"
+              onClick={() => setMenuOpen(false)}
+              style={{
+                background: 'none',
+                border: 'none',
+                textAlign: 'left',
+                padding: '0.625rem 0.5rem',
+                fontSize: '1rem',
+                fontWeight: 500,
+                color: '#334155',
+                cursor: 'pointer',
+                borderRadius: '0.375rem',
+                textDecoration: 'none',
+              }}
+            >
+              Dados
+            </Link>
             {[
               ['problem', t('nav.problem')],
               ['solution', t('nav.solution')],
