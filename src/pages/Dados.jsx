@@ -34,8 +34,8 @@ const CATEGORIES = [
     title: 'Carregamento Eléctrico',
     subtitle: 'Quanto custa carregar o carro?',
     description: 'Tarifas actuais dos principais operadores de carregamento para veículos eléctricos em Portugal.',
-    badge: 'EM BREVE',
-    badgeColor: '#64748B',
+    badge: 'LIVE',
+    badgeColor: '#10B981',
     path: '/dados/carregamento-eletrico'
   },
   {
