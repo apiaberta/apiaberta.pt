@@ -9,6 +9,8 @@ import ContactPage from './pages/ContactPage'
 import Dados from './pages/Dados'
 import DadosTempo from './pages/DadosTempo'
 import DadosCombustivel from './pages/DadosCombustivel'
+import DadosEV from './pages/DadosEV'
+import DadosContratos from './pages/DadosContratos'
 
 export default function App() {
   return (
@@ -24,6 +26,8 @@ export default function App() {
               <Route path="/dados" element={<Dados />} />
               <Route path="/dados/tempo" element={<DadosTempo />} />
               <Route path="/dados/combustivel" element={<DadosCombustivel />} />
+              <Route path="/dados/carregamento-eletrico" element={<DadosEV />} />
+              <Route path="/dados/contratos-publicos" element={<DadosContratos />} />
             </Routes>
           </main>
           <Footer />

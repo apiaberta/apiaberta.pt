@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Cloud, Fuel, FileText, ArrowRight, ArrowLeft, Database } from 'lucide-react'
+import { Cloud, Fuel, FileText, Zap, ArrowRight, ArrowLeft, Database } from 'lucide-react'
 
 const CATEGORIES = [
   {
@@ -8,9 +8,10 @@ const CATEGORIES = [
     color: '#3B82F6',
     bg: '#EFF6FF',
     title: 'Meteorologia',
-    subtitle: 'Previsão do tempo',
+    subtitle: 'Que tempo vai fazer?',
     description: 'Previsões meteorológicas para as principais cidades portuguesas. Dados oficiais do IPMA, actualizados a cada 6 horas.',
-    badge: 'IPMA',
+    badge: 'LIVE',
+    badgeColor: '#10B981',
     path: '/dados/tempo'
   },
   {
@@ -19,22 +20,35 @@ const CATEGORIES = [
     color: '#F59E0B',
     bg: '#FFFBEB',
     title: 'Combustíveis',
-    subtitle: 'Preços nas bombas',
+    subtitle: 'Quanto custa abastecer hoje?',
     description: 'Preços actuais de combustíveis em postos de todo o país. Dados da DGEG actualizados diariamente.',
-    badge: 'DGEG',
+    badge: 'LIVE',
+    badgeColor: '#10B981',
     path: '/dados/combustivel'
   },
   {
-    slug: 'contratos',
+    slug: 'carregamento-eletrico',
+    icon: Zap,
+    color: '#10B981',
+    bg: '#ECFDF5',
+    title: 'Carregamento Eléctrico',
+    subtitle: 'Quanto custa carregar o carro?',
+    description: 'Tarifas actuais dos principais operadores de carregamento para veículos eléctricos em Portugal.',
+    badge: 'EM BREVE',
+    badgeColor: '#64748B',
+    path: '/dados/carregamento-eletrico'
+  },
+  {
+    slug: 'contratos-publicos',
     icon: FileText,
     color: '#8B5CF6',
     bg: '#F5F3FF',
     title: 'Contratos Públicos',
-    subtitle: 'Portal BASE',
+    subtitle: 'Como o Estado gasta o teu dinheiro',
     description: 'Contratos públicos do portal BASE.gov.pt. Ajustes directos e concursos públicos actualizados diariamente.',
-    badge: 'BASE',
-    path: '/dados/contratos',
-    soon: false
+    badge: 'EM BREVE',
+    badgeColor: '#64748B',
+    path: '/dados/contratos-publicos'
   }
 ]
 
@@ -102,9 +116,23 @@ export default function Dados() {
                       <Icon size={24} color={cat.color} />
                     </div>
                     <span style={{
-                      background: '#F1F5F9', color: '#475569', fontSize: '0.75rem',
-                      fontWeight: 600, padding: '0.25rem 0.625rem', borderRadius: '999px'
+                      background: cat.badge === 'LIVE' ? '#ECFDF5' : '#F1F5F9',
+                      color: cat.badgeColor,
+                      fontSize: '0.75rem',
+                      fontWeight: 700,
+                      padding: '0.25rem 0.625rem',
+                      borderRadius: '999px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.25rem'
                     }}>
+                      {cat.badge === 'LIVE' && <span style={{
+                        width: '6px',
+                        height: '6px',
+                        borderRadius: '50%',
+                        background: '#10B981',
+                        animation: 'pulse 2s infinite'
+                      }} />}
                       {cat.badge}
                     </span>
                   </div>
@@ -151,6 +179,13 @@ export default function Dados() {
           </a>
         </div>
       </div>
+
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.4; }
+        }
+      `}</style>
     </div>
   )
 }
