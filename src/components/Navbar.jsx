@@ -71,6 +71,9 @@ export default function Navbar() {
             <Link to="/dados" className="nav-link" style={{ textDecoration: 'none' }}>
               Dados
             </Link>
+            <Link to="/changelog" className="nav-link" style={{ textDecoration: 'none' }}>
+              Changelog
+            </Link>
             <button onClick={() => scrollTo('problem')} className="nav-link">
               {t('nav.problem')}
             </button>

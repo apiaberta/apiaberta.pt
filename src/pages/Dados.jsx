@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Cloud, Fuel, FileText, Zap, ArrowRight, ArrowLeft, Database } from 'lucide-react'
+import { Cloud, Fuel, FileText, Zap, ArrowRight, ArrowLeft, Database, BarChart2, ShieldAlert } from 'lucide-react'
 
 const CATEGORIES = [
   {
@@ -46,9 +46,33 @@ const CATEGORIES = [
     title: 'Contratos Públicos',
     subtitle: 'Como o Estado gasta o teu dinheiro',
     description: 'Contratos públicos do portal BASE.gov.pt. Ajustes directos e concursos públicos actualizados diariamente.',
-    badge: 'EM BREVE',
-    badgeColor: '#64748B',
+    badge: 'LIVE',
+    badgeColor: '#10B981',
     path: '/dados/contratos-publicos'
+  },
+  {
+    slug: 'estatisticas',
+    icon: BarChart2,
+    color: '#6366F1',
+    bg: '#EEF2FF',
+    title: 'Estatísticas de Portugal',
+    subtitle: 'Números que definem o país',
+    description: 'Indicadores económicos e demográficos oficiais: população, PIB, desemprego, inflação e mais. Via Eurostat, série histórica desde 1960.',
+    badge: 'NOVO',
+    badgeColor: '#16A34A',
+    path: '/dados/estatisticas'
+  },
+  {
+    slug: 'protecao-civil',
+    icon: ShieldAlert,
+    color: '#DC2626',
+    bg: '#FEF2F2',
+    title: 'Proteção Civil',
+    subtitle: 'Ocorrências activas em Portugal',
+    description: 'Incêndios, inundações e operações de socorro da ANEPC em tempo real. Actualizado a cada 5 minutos via fogos.pt.',
+    badge: '🔴 LIVE',
+    badgeColor: '#DC2626',
+    path: '/dados/protecao-civil'
   }
 ]
 

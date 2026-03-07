@@ -11,6 +11,9 @@ import DadosTempo from './pages/DadosTempo'
 import DadosCombustivel from './pages/DadosCombustivel'
 import DadosEV from './pages/DadosEV'
 import DadosContratos from './pages/DadosContratos'
+import DadosINE from './pages/DadosINE'
+import DadosANPC from './pages/DadosANPC'
+import Changelog from './pages/Changelog'
 
 export default function App() {
   return (
@@ -23,11 +26,14 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/contribute" element={<Contribute />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/changelog" element={<Changelog />} />
               <Route path="/dados" element={<Dados />} />
               <Route path="/dados/tempo" element={<DadosTempo />} />
               <Route path="/dados/combustivel" element={<DadosCombustivel />} />
               <Route path="/dados/carregamento-eletrico" element={<DadosEV />} />
               <Route path="/dados/contratos-publicos" element={<DadosContratos />} />
+              <Route path="/dados/estatisticas" element={<DadosINE />} />
+              <Route path="/dados/protecao-civil" element={<DadosANPC />} />
             </Routes>
           </main>
           <Footer />
