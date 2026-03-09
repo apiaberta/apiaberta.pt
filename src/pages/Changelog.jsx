@@ -3,6 +3,37 @@ import { ArrowLeft, GitCommit, Star, Shield, Zap, Database, ShieldAlert, BarChar
 
 const RELEASES = [
   {
+    date: '2026-03-09',
+    version: 'Sprint 5 — SDKs & Developer Experience',
+    tag: 'Novo',
+    tagColor: '#16A34A',
+    tagBg: '#F0FDF4',
+    items: [
+      {
+        icon: Code,
+        color: '#6366F1',
+        title: 'JavaScript SDK — apiaberta-js',
+        desc: 'SDK oficial para Node.js e browsers. ESM + CommonJS, TypeScript types incluídos. Cobertura total de endpoints com tratamento de erros e timeout configurável.',
+        endpoints: ['npm install apiaberta-js']
+      },
+      {
+        icon: Code,
+        color: '#3B82F6',
+        title: 'Python SDK — apiaberta-py',
+        desc: 'SDK oficial para Python 3.8+. Wrapper completo sobre a API REST com docstrings detalhadas e suporte a variável de ambiente APIABERTA_KEY.',
+        endpoints: ['pip install apiaberta']
+      },
+      {
+        icon: Zap,
+        color: '#F59E0B',
+        title: 'Página de documentação SDK',
+        desc: 'Nova página /sdk com exemplos de código interactivos, referência de métodos e selector de linguagem (JavaScript / Python).',
+        endpoints: ['/sdk']
+      }
+    ]
+  },
+
+  {
     date: '2026-03-07',
     version: 'Sprint 3 — Crescimento',
     tag: 'Novo',
