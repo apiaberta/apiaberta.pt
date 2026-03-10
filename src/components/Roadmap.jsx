@@ -2,10 +2,12 @@ import { useLanguage } from '../contexts/LanguageContext'
 
 const roadmapItems = [
   { key: 1, status: 'done' },
-  { key: 2, status: 'in-progress' },
-  { key: 3, status: 'todo' },
-  { key: 4, status: 'todo' },
-  { key: 5, status: 'todo' },
+  { key: 2, status: 'done' },
+  { key: 3, status: 'done' },
+  { key: 4, status: 'done' },
+  { key: 5, status: 'in-progress' },
+  { key: 6, status: 'todo' },
+  { key: 7, status: 'todo' },
 ]
 
 const statusConfig = {
@@ -70,7 +72,7 @@ export default function Roadmap() {
               top: 0,
               bottom: 0,
               width: '2px',
-              background: 'linear-gradient(to bottom, #16A34A, #F59E0B 40%, #E2E8F0)',
+              background: 'linear-gradient(to bottom, #16A34A, #16A34A 57%, #F59E0B 70%, #E2E8F0)',
             }}
           />
 
