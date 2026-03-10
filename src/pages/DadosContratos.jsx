@@ -90,7 +90,7 @@ export default function DadosContratos() {
   const totalValue = filtered.reduce((sum, c) => sum + (c.contract_value_eur || 0), 0)
 
   return (
-    <div style={{ paddingTop: '5rem', minHeight: '100vh', background: '#FAFAFA' }}>
+    <div className="pt-16 min-h-screen" style={{ background: '#FAFAFA' }}>
       {/* Header */}
       <div style={{ background: '#0F172A', padding: '3rem 1.5rem', textAlign: 'center' }}>
         <div style={{ maxWidth: '700px', margin: '0 auto' }}>
