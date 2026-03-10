@@ -1,0 +1,26 @@
+# API Aberta
+
+> API REST unificada para dados públicos portugueses. Gratuita para developers e investigadores.
+
+API Aberta disponibiliza dados públicos de Portugal numa API REST moderna e documentada. Todos os endpoints são gratuitos e não requerem autenticação para uso básico.
+
+## Dados disponíveis
+
+- [Preços de Combustíveis](https://api.apiaberta.pt/v1/fuel/prices) — Preços DGEG actualizados diariamente para 14 tipos de combustível em todo o país
+- [Previsão do Tempo](https://api.apiaberta.pt/v1/ipma/forecast/1110600) — Previsões e avisos meteorológicos do IPMA
+- [Carregamento Eléctrico](https://api.apiaberta.pt/v1/ev/tariffs) — Tarifas dos operadores CEME e preços OMIE spot
+- [Contratos Públicos](https://api.apiaberta.pt/v1/base/contracts) — Contratos públicos do Portal Base
+- [Estatísticas de Portugal](https://api.apiaberta.pt/v1/ine/latest) — Indicadores do INE/Eurostat (PIB, população, desemprego)
+- [Protecção Civil](https://api.apiaberta.pt/v1/anpc/incidents/active) — Ocorrências activas da ANEPC
+- [Taxas de Juro](https://api.apiaberta.pt/v1/bdp/rates) — Taxas BCE, €STR e taxas de crédito do Banco de Portugal
+
+## Documentação
+
+- [Documentação completa](https://apiaberta.pt)
+- [Portal do Developer](https://app.apiaberta.pt)
+- [Estado dos serviços](https://status.apiaberta.pt)
+- [GitHub](https://github.com/apiaberta)
+
+## Licença
+
+Dados abertos. Gratuito para uso não-comercial e comercial com atribuição.

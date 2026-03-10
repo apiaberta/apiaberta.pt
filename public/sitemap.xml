@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://apiaberta.pt/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://apiaberta.pt/dados</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://apiaberta.pt/dados/combustiveis</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://apiaberta.pt/dados/tempo</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://apiaberta.pt/dados/ev</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://apiaberta.pt/dados/contratos</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+  <url><loc>https://apiaberta.pt/dados/estatisticas</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://apiaberta.pt/dados/protecao-civil</loc><changefreq>hourly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://apiaberta.pt/dados/taxas-juro</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+  <url><loc>https://apiaberta.pt/sdk</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://apiaberta.pt/changelog</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+</urlset>
