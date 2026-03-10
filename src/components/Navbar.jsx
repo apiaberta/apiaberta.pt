@@ -5,10 +5,10 @@ import { useLanguage } from '../contexts/LanguageContext'
 import LanguageSwitcher from './LanguageSwitcher'
 
 const dadosLinks = [
-  { icon: '⛽', label: 'Combustíveis', path: '/dados/combustiveis', desc: 'Preços DGEG actualizados diariamente' },
+  { icon: '⛽', label: 'Combustíveis', path: '/dados/combustivel', desc: 'Preços DGEG actualizados diariamente' },
   { icon: '🌤', label: 'Meteorologia', path: '/dados/tempo', desc: 'Previsões e avisos IPMA' },
   { icon: '⚡', label: 'Carregamento EV', path: '/dados/ev', desc: 'Tarifas CEME e preços spot OMIE' },
-  { icon: '📋', label: 'Contratos Públicos', path: '/dados/contratos', desc: 'Portal Base — contratos do Estado' },
+  { icon: '📋', label: 'Contratos Públicos', path: '/dados/contratos-publicos', desc: 'Portal Base — contratos do Estado' },
   { icon: '📊', label: 'Estatísticas', path: '/dados/estatisticas', desc: 'Indicadores INE e Eurostat' },
   { icon: '🚨', label: 'Proteção Civil', path: '/dados/protecao-civil', desc: 'Ocorrências activas ANEPC' },
   { icon: '🏦', label: 'Taxas de Juro', path: '/dados/taxas-juro', desc: 'BCE, €STR e Banco de Portugal' },
