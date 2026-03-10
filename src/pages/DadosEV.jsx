@@ -1,18 +1,28 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Zap, ArrowLeft, RefreshCw, AlertTriangle, TrendingDown } from 'lucide-react'
+import { Zap, ArrowLeft, RefreshCw, AlertTriangle, TrendingDown, Clock } from 'lucide-react'
 
-const API_URL = 'https://api.apiaberta.pt/v1/ev/tariffs'
+const API_TARIFFS = 'https://api.apiaberta.pt/v1/ev/tariffs'
+const API_META    = 'https://api.apiaberta.pt/v1/ev/meta'
 
 const PERIODS = {
-  'vazio': { label: 'Vazio', emoji: '🟢' },
-  'normal': { label: 'Fora Vazio', emoji: '🟡' },
-  'ponta': { label: 'Ponta', emoji: '🔴' }
+  'vazio':  { label: 'Vazio',       emoji: '🟢' },
+  'normal': { label: 'Fora Vazio',  emoji: '🟡' },
+  'ponta':  { label: 'Ponta',       emoji: '🔴' }
+}
+
+function formatDateTime(iso) {
+  if (!iso) return '—'
+  return new Date(iso).toLocaleString('pt-PT', {
+    day: '2-digit', month: '2-digit', year: 'numeric',
+    hour: '2-digit', minute: '2-digit',
+    timeZone: 'Europe/Lisbon'
+  })
 }
 
 function TariffRow({ tariff, kWh }) {
-  const current = tariff.current_price_eur_kwh || 0
-  const costTotal = current * kWh
+  const current    = tariff.current_price_eur_kwh || 0
+  const costTotal  = current * kWh
 
   return (
     <div style={{
@@ -29,7 +39,9 @@ function TariffRow({ tariff, kWh }) {
       <div style={{ minWidth: '140px' }}>
         <div style={{ fontWeight: 700, color: '#0F172A', fontSize: '1rem' }}>{tariff.ceme}</div>
         <div style={{ color: '#64748B', fontSize: '0.8rem', marginTop: '0.2rem' }}>
-          {tariff.period_type ? `${PERIODS[tariff.period_type]?.emoji || ''} ${PERIODS[tariff.period_type]?.label || tariff.period_type}` : 'Simples'}
+          {tariff.period_type
+            ? `${PERIODS[tariff.period_type]?.emoji || ''} ${PERIODS[tariff.period_type]?.label || tariff.period_type}`
+            : 'Simples'}
         </div>
       </div>
 
@@ -64,19 +76,27 @@ function TariffRow({ tariff, kWh }) {
 }
 
 export default function DadosEV() {
-  const [data, setData] = useState(null)
+  const [data,    setData]    = useState(null)
+  const [meta,    setMeta]    = useState(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [kWh, setKWh] = useState(40)
+  const [error,   setError]   = useState(null)
+  const [kWh,     setKWh]     = useState(40)
 
   const load = async () => {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch(API_URL)
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
-      const json = await res.json()
-      setData(json)
+      const [tariffsRes, metaRes] = await Promise.all([
+        fetch(API_TARIFFS),
+        fetch(API_META)
+      ])
+      if (!tariffsRes.ok) throw new Error(`HTTP ${tariffsRes.status}`)
+      const [tariffsJson, metaJson] = await Promise.all([
+        tariffsRes.json(),
+        metaRes.ok ? metaRes.json() : Promise.resolve(null)
+      ])
+      setData(tariffsJson)
+      setMeta(metaJson)
     } catch (err) {
       setError(err.message)
     } finally {
@@ -86,18 +106,23 @@ export default function DadosEV() {
 
   useEffect(() => { load() }, [])
 
-  const tariffs = data?.data || []
-  const sorted = [...tariffs].sort((a, b) => {
+  const tariffs    = data?.data || []
+  const sorted     = [...tariffs].sort((a, b) => {
     const priceA = (a.current_price_eur_kwh || 999) + (a.activation_fee_eur || 0) / kWh
     const priceB = (b.current_price_eur_kwh || 999) + (b.activation_fee_eur || 0) / kWh
     return priceA - priceB
   })
 
-  const cheapest = sorted[0]
-  const cheapestCost = cheapest ? ((cheapest.current_price_eur_kwh * kWh) + (cheapest.activation_fee_eur || 0)).toFixed(2) : null
+  const cheapest     = sorted[0]
+  const cheapestCost = cheapest
+    ? ((cheapest.current_price_eur_kwh * kWh) + (cheapest.activation_fee_eur || 0)).toFixed(2)
+    : null
 
-  const currentHour = data?.meta?.current_hour || new Date().getHours()
+  const currentHour   = data?.meta?.current_hour || new Date().getHours()
   const currentPeriod = currentHour >= 9 && currentHour < 18 ? 'normal' : 'vazio'
+
+  const lastSync      = meta?.stats?.last_spot_sync || null
+  const lastTariffUpdate = tariffs[0]?.updated_at || null
 
   return (
     <div style={{ paddingTop: '5rem', minHeight: '100vh', background: '#FAFAFA' }}>
@@ -125,6 +150,19 @@ export default function DadosEV() {
           <p style={{ color: '#94A3B8', fontSize: '0.95rem' }}>
             Tarifas actuais dos principais operadores CEME em Portugal
           </p>
+
+          {/* Last update badge */}
+          {!loading && (lastSync || lastTariffUpdate) && (
+            <div style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+              background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16,185,129,0.3)',
+              borderRadius: '999px', padding: '0.35rem 0.875rem', marginTop: '1rem',
+              color: '#34D399', fontSize: '0.8rem', fontWeight: 500
+            }}>
+              <Clock size={13} />
+              Preços spot actualizados: {formatDateTime(lastSync || lastTariffUpdate)}
+            </div>
+          )}
         </div>
       </div>
 
@@ -155,6 +193,29 @@ export default function DadosEV() {
 
         {!loading && !error && (
           <>
+            {/* Stats row */}
+            {meta && (
+              <div style={{
+                display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+                gap: '0.75rem', marginBottom: '1.5rem'
+              }}>
+                <div style={{ background: 'white', border: '1px solid #E2E8F0', borderRadius: '0.875rem', padding: '1rem', textAlign: 'center' }}>
+                  <div style={{ fontSize: '1.5rem', fontWeight: 900, color: '#0F172A' }}>{meta.stats?.tariffs ?? '—'}</div>
+                  <div style={{ color: '#64748B', fontSize: '0.78rem', marginTop: '0.2rem' }}>Operadores CEME</div>
+                </div>
+                <div style={{ background: 'white', border: '1px solid #E2E8F0', borderRadius: '0.875rem', padding: '1rem', textAlign: 'center' }}>
+                  <div style={{ fontSize: '1.5rem', fontWeight: 900, color: '#0F172A' }}>{meta.stats?.spot_records?.toLocaleString('pt-PT') ?? '—'}</div>
+                  <div style={{ color: '#64748B', fontSize: '0.78rem', marginTop: '0.2rem' }}>Registos OMIE</div>
+                </div>
+                <div style={{ background: 'white', border: '1px solid #E2E8F0', borderRadius: '0.875rem', padding: '1rem', textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#0F172A' }}>
+                    {meta.stats?.last_spot_date ?? '—'}
+                  </div>
+                  <div style={{ color: '#64748B', fontSize: '0.78rem', marginTop: '0.2rem' }}>Último dia OMIE</div>
+                </div>
+              </div>
+            )}
+
             {/* Current period indicator */}
             <div style={{
               background: 'white',
@@ -180,7 +241,7 @@ export default function DadosEV() {
                 padding: '0.5rem 1rem',
                 borderRadius: '999px',
                 background: currentPeriod === 'vazio' ? '#ECFDF5' : '#FEF3C7',
-                color: currentPeriod === 'vazio' ? '#059669' : '#D97706',
+                color:      currentPeriod === 'vazio' ? '#059669' : '#D97706',
                 fontWeight: 700,
                 fontSize: '0.9rem'
               }}>
@@ -264,11 +325,18 @@ export default function DadosEV() {
               </div>
             )}
 
-            {/* API note */}
+            {/* Update info + API note */}
             <div style={{
               marginTop: '2.5rem', background: '#F8FAFC', border: '1px solid #E2E8F0',
-              borderRadius: '0.875rem', padding: '1.25rem 1.5rem'
+              borderRadius: '0.875rem', padding: '1.25rem 1.5rem',
+              display: 'flex', flexDirection: 'column', gap: '0.625rem'
             }}>
+              {lastSync && (
+                <p style={{ color: '#475569', fontSize: '0.85rem', margin: 0, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <Clock size={14} color="#94A3B8" />
+                  <span>Preços spot (OMIE) actualizados a <strong>{formatDateTime(lastSync)}</strong> · Actualização diária às 13:30</span>
+                </p>
+              )}
               <p style={{ color: '#475569', fontSize: '0.85rem', margin: 0 }}>
                 <strong>API:</strong>{' '}
                 <code style={{ color: '#16A34A', background: '#F0FDF4', padding: '0.15rem 0.375rem', borderRadius: '0.25rem' }}>
