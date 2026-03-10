@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } 
+import { Navigate, BrowserRouter, Routes, Route } from 'react-router-dom'
 import { LanguageProvider } from './contexts/LanguageContext'
 import { ApiProvider } from './contexts/ApiContext'
 import Navbar from './components/Navbar'
