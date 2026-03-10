@@ -1,6 +1,17 @@
-import { Code2, Github, ExternalLink } from 'lucide-react'
+import { Code2, Github, List } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 import LanguageSwitcher from './LanguageSwitcher'
+
+const dadosLinks = [
+  { label: 'Combustíveis', path: '/dados/combustiveis' },
+  { label: 'Meteorologia', path: '/dados/tempo' },
+  { label: 'Carregamento EV', path: '/dados/ev' },
+  { label: 'Contratos Públicos', path: '/dados/contratos' },
+  { label: 'Estatísticas', path: '/dados/estatisticas' },
+  { label: 'Proteção Civil', path: '/dados/protecao-civil' },
+  { label: 'Taxas de Juro', path: '/dados/taxas-juro' },
+]
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -53,6 +64,29 @@ export default function Footer() {
             </p>
           </div>
 
+          {/* Dados column */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <p style={{ fontSize: '0.8rem', color: '#475569', marginBottom: '0.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              Dados
+            </p>
+            {dadosLinks.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                style={{
+                  color: '#94A3B8',
+                  textDecoration: 'none',
+                  fontSize: '0.9rem',
+                  transition: 'color 0.15s',
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.color = '#4ADE80')}
+                onMouseOut={(e) => (e.currentTarget.style.color = '#94A3B8')}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
           {/* Links */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {links.map((link) => (
@@ -77,6 +111,23 @@ export default function Footer() {
                 {link.label}
               </a>
             ))}
+            <Link
+              to="/changelog"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.375rem',
+                color: '#94A3B8',
+                textDecoration: 'none',
+                fontSize: '0.9rem',
+                transition: 'color 0.15s',
+              }}
+              onMouseOver={(e) => (e.currentTarget.style.color = '#4ADE80')}
+              onMouseOut={(e) => (e.currentTarget.style.color = '#94A3B8')}
+            >
+              <List size={14} />
+              Changelog
+            </Link>
           </div>
 
           {/* Language switcher */}
