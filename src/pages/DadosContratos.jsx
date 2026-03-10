@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FileText, ArrowLeft, RefreshCw, AlertTriangle, Search } from 'lucide-react'
 
-const API_URL = 'https://api.apiaberta.pt/v1/contracts/recent'
+const API_URL = 'https://api.apiaberta.pt/v1/base/contracts'
 
 function ContractRow({ contract }) {
   const value = contract.contract_value_eur
