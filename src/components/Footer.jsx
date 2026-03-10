@@ -4,10 +4,10 @@ import { useLanguage } from '../contexts/LanguageContext'
 import LanguageSwitcher from './LanguageSwitcher'
 
 const dadosLinks = [
-  { label: 'Combustíveis', path: '/dados/combustiveis' },
+  { label: 'Combustíveis', path: '/dados/combustivel' },
   { label: 'Meteorologia', path: '/dados/tempo' },
   { label: 'Carregamento EV', path: '/dados/ev' },
-  { label: 'Contratos Públicos', path: '/dados/contratos' },
+  { label: 'Contratos Públicos', path: '/dados/contratos-publicos' },
   { label: 'Estatísticas', path: '/dados/estatisticas' },
   { label: 'Proteção Civil', path: '/dados/protecao-civil' },
   { label: 'Taxas de Juro', path: '/dados/taxas-juro' },
