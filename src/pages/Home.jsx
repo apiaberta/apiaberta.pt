@@ -1,4 +1,5 @@
 import Hero from '../components/Hero'
+import StatsCounter from '../components/StatsCounter'
 import Problem from '../components/Problem'
 import Solution from '../components/Solution'
 import FuelShowcase from '../components/FuelShowcase'
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <StatsCounter />
       <Problem />
       <Solution />
       <FuelShowcase />
