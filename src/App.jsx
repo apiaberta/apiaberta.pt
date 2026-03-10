@@ -13,6 +13,7 @@ import DadosEV from './pages/DadosEV'
 import DadosContratos from './pages/DadosContratos'
 import DadosINE from './pages/DadosINE'
 import DadosANPC from './pages/DadosANPC'
+import DadosBdp from './pages/DadosBdp'
 import Changelog from './pages/Changelog'
 import SdkDocs from './pages/SdkDocs'
 
@@ -35,6 +36,7 @@ export default function App() {
               <Route path="/dados/contratos-publicos" element={<DadosContratos />} />
               <Route path="/dados/estatisticas" element={<DadosINE />} />
               <Route path="/dados/protecao-civil" element={<DadosANPC />} />
+              <Route path="/dados/taxas-juro" element={<DadosBdp />} />
               <Route path="/sdk" element={<SdkDocs />} />
             </Routes>
           </main>

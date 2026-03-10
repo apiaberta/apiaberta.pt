@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Cloud, Fuel, FileText, Zap, ArrowRight, ArrowLeft, Database, BarChart2, ShieldAlert } from 'lucide-react'
+import { Cloud, Fuel, FileText, Zap, ArrowRight, ArrowLeft, Database, BarChart2, ShieldAlert, TrendingUp } from 'lucide-react'
 
 const CATEGORIES = [
   {
@@ -73,6 +73,18 @@ const CATEGORIES = [
     badge: '🔴 LIVE',
     badgeColor: '#DC2626',
     path: '/dados/protecao-civil'
+  },
+  {
+    slug: 'taxas-juro',
+    icon: TrendingUp,
+    color: '#1D4ED8',
+    bg: '#EFF6FF',
+    title: 'Taxas de Juro',
+    subtitle: 'BCE, €STR e crédito em Portugal',
+    description: 'Taxas BCE (MRO, depósito, cedência marginal), €STR, TBA do BdP e taxas de crédito à habitação, consumo e depósitos em Portugal.',
+    badge: 'NOVO',
+    badgeColor: '#1D4ED8',
+    path: '/dados/taxas-juro'
   }
 ]
 

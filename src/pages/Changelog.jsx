@@ -1,7 +1,37 @@
 import { Link } from 'react-router-dom'
-import { ArrowLeft, GitCommit, Star, Shield, Zap, Database, ShieldAlert, BarChart2 } from 'lucide-react'
+import { ArrowLeft, GitCommit, Star, Shield, Zap, Database, ShieldAlert, BarChart2, TrendingUp, Webhook, Code } from 'lucide-react'
 
 const RELEASES = [
+  {
+    date: '2026-03-10',
+    version: 'Sprint 6 — Webhooks + Banco de Portugal',
+    tag: 'Novo',
+    tagColor: '#1D4ED8',
+    tagBg: '#EFF6FF',
+    items: [
+      {
+        icon: Webhook,
+        color: '#6366F1',
+        title: 'Sistema de Webhooks v1',
+        desc: 'Os developers podem agora registar endpoints HTTPS para receber notificações em tempo real quando dados mudam. Suporte a 3 eventos: avisos IPMA, actualização de preços de combustível, novos incidentes ANPC. Assinatura HMAC-SHA256 em cada entrega. Retry automático (3 tentativas com backoff).',
+        endpoints: ['POST /v1/webhooks', 'GET /v1/webhooks', 'DELETE /v1/webhooks/:id', 'GET /v1/webhooks/:id/deliveries', 'GET /v1/webhooks/events']
+      },
+      {
+        icon: TrendingUp,
+        color: '#1D4ED8',
+        title: 'connector-bdp — Banco de Portugal',
+        desc: 'Novo conector com taxas financeiras do BdP BPstat API: taxas BCE (MRO, facilidade de depósito, cedência marginal), €STR, TBA do BdP, e taxas de crédito habitação, consumo e depósitos a prazo em Portugal. Sincronização diária às 08:00.',
+        endpoints: ['/v1/bdp/rates', '/v1/bdp/lending-rates', '/v1/bdp/meta']
+      },
+      {
+        icon: Star,
+        color: '#10B981',
+        title: 'Gateway v0.3.0',
+        desc: '8 connectores activos (+ BdP). Worker de webhooks integrado: polling a cada 5 minutos, entrega a cada 1 minuto. Detecção automática de novos avisos meteorológicos, combustíveis actualizados e novos incidentes de proteção civil.',
+        endpoints: ['GET /v1/status — 7 serviços healthy']
+      }
+    ]
+  },
   {
     date: '2026-03-09',
     version: 'Sprint 5 — SDKs & Developer Experience',
