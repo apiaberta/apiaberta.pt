@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } 
 import { LanguageProvider } from './contexts/LanguageContext'
 import { ApiProvider } from './contexts/ApiContext'
 import Navbar from './components/Navbar'
@@ -32,7 +32,8 @@ export default function App() {
               <Route path="/dados" element={<Dados />} />
               <Route path="/dados/tempo" element={<DadosTempo />} />
               <Route path="/dados/combustivel" element={<DadosCombustivel />} />
-              <Route path="/dados/carregamento-eletrico" element={<DadosEV />} />
+              <Route path="/dados/ev" element={<DadosEV />} />
+              <Route path="/dados/carregamento-eletrico" element={<Navigate to="/dados/ev" replace />} />
               <Route path="/dados/contratos-publicos" element={<DadosContratos />} />
               <Route path="/dados/estatisticas" element={<DadosINE />} />
               <Route path="/dados/protecao-civil" element={<DadosANPC />} />
