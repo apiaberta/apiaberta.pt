@@ -16,6 +16,7 @@ import DadosANPC from './pages/DadosANPC'
 import DadosBdp from './pages/DadosBdp'
 import Changelog from './pages/Changelog'
 import SdkDocs from './pages/SdkDocs'
+import DadosGeo from './pages/DadosGeo'
 
 export default function App() {
   return (
@@ -38,6 +39,7 @@ export default function App() {
               <Route path="/dados/estatisticas" element={<DadosINE />} />
               <Route path="/dados/protecao-civil" element={<DadosANPC />} />
               <Route path="/dados/taxas-juro" element={<DadosBdp />} />
+              <Route path="/dados/geo" element={<DadosGeo />} />
               <Route path="/sdk" element={<SdkDocs />} />
             </Routes>
           </main>

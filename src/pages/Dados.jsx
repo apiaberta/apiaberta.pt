@@ -85,6 +85,19 @@ const CATEGORIES = [
     badge: 'NOVO',
     badgeColor: '#1D4ED8',
     path: '/dados/taxas-juro'
+  },
+  {
+    slug: 'geo',
+    emoji: '🗺️',
+    color: '#6366F1',
+    bg: '#EEF2FF',
+    title: 'Dados Geográficos',
+    subtitle: 'Distritos, municípios e códigos postais',
+    description: 'Distritos, municípios, freguesias e códigos postais de Portugal.',
+    badge: 'Novo',
+    badgeColor: '#6366F1',
+    source: 'geoapi.pt',
+    path: '/dados/geo'
   }
 ]
 
@@ -148,8 +161,8 @@ export default function Dados() {
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                    <div style={{ background: cat.bg, borderRadius: '0.75rem', padding: '0.75rem', display: 'flex' }}>
-                      <Icon size={24} color={cat.color} />
+                    <div style={{ background: cat.bg, borderRadius: '0.75rem', padding: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      {Icon ? <Icon size={24} color={cat.color} /> : <span style={{ fontSize: '1.5rem', lineHeight: 1 }}>{cat.emoji}</span>}
                     </div>
                     <span style={{
                       background: cat.badge === 'LIVE' ? '#ECFDF5' : '#F1F5F9',

@@ -11,6 +11,7 @@ const dadosLinks = [
   { label: 'Estatísticas', path: '/dados/estatisticas' },
   { label: 'Proteção Civil', path: '/dados/protecao-civil' },
   { label: 'Taxas de Juro', path: '/dados/taxas-juro' },
+  { label: 'Dados Geográficos', path: '/dados/geo' },
 ]
 
 export default function Footer() {

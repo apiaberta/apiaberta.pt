@@ -12,6 +12,7 @@ const dadosLinks = [
   { icon: '📊', label: 'Estatísticas', path: '/dados/estatisticas', desc: 'Indicadores INE e Eurostat' },
   { icon: '🚨', label: 'Proteção Civil', path: '/dados/protecao-civil', desc: 'Ocorrências activas ANEPC' },
   { icon: '🏦', label: 'Taxas de Juro', path: '/dados/taxas-juro', desc: 'BCE, €STR e Banco de Portugal' },
+  { icon: '🗺️', label: 'Dados Geográficos', path: '/dados/geo', desc: 'Distritos, municípios e códigos postais' },
 ]
 
 export default function Navbar() {
