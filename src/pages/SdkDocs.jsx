@@ -18,7 +18,11 @@ console.log(weather.data[0])
 
 // Ocorrências de proteção civil activas
 const incidents = await api.activeIncidents()
-console.log(\`\${incidents.count} ocorrências activas\`)`,
+console.log(\`\${incidents.count} ocorrências activas\`)
+
+// Taxas de juro BCE + €STR (Banco de Portugal)
+const rates = await api.bdpRates()
+console.log(rates.data)`,
   errors: `import { ApiAberta, ApiAbertaError } from 'apiaberta-js'
 
 const api = new ApiAberta({ apiKey: 'your-key' })
@@ -48,7 +52,11 @@ print(weather["data"][0])
 
 # Ocorrências activas
 incidents = api.active_incidents()
-print(f"{incidents['count']} ocorrências activas")`,
+print(f"{incidents['count']} ocorrências activas")
+
+# Taxas de juro BCE + €STR
+rates = api.bdp_rates()
+print(rates["data"])`,
   errors: `from apiaberta import ApiAberta, ApiAbertaError
 
 api = ApiAberta(api_key="your-key")
@@ -70,6 +78,9 @@ const CODE_METHODS = [
   { method: 'stats()', desc: 'Estatísticas nacionais (INE/Eurostat)', endpoint: '/v1/ine/stats' },
   { method: 'ev()', desc: 'Tarifas de carregamento elétrico', endpoint: '/v1/ev/tariffs' },
   { method: 'contracts()', desc: 'Contratos públicos (BASE.gov)', endpoint: '/v1/base/contracts' },
+  { method: 'bdpRates()', desc: 'Taxas de juro BCE + €STR (Banco de Portugal)', endpoint: '/v1/bdp/rates' },
+  { method: 'bdpLendingRates()', desc: 'Crédito habitação, consumo e depósitos a prazo', endpoint: '/v1/bdp/lending-rates' },
+  { method: 'bdpMeta()', desc: 'Metadados e catálogo de séries BdP', endpoint: '/v1/bdp/meta' },
   { method: 'status()', desc: 'Estado da plataforma', endpoint: '/v1/status' },
   { method: 'usage()', desc: 'Consumo da tua API key', endpoint: '/v1/auth/usage' },
 ]
@@ -115,7 +126,7 @@ function CodeBlock({ code, language = 'js' }) {
 export default function SdkDocs() {
   const [lang, setLang] = useState('js')
   const examples = lang === 'js' ? JS_EXAMPLES : PY_EXAMPLES
-  const methodSuffix = lang === 'py' ? (m) => m.replace('()', '()').replace('fuelStations', 'fuel_stations').replace('weatherCity', 'weather_city').replace('weatherWarnings', 'weather_warnings').replace('activeIncidents', 'active_incidents') : (m) => m
+  const methodSuffix = lang === 'py' ? (m) => m.replace('fuelStations', 'fuel_stations').replace('weatherCity', 'weather_city').replace('weatherWarnings', 'weather_warnings').replace('activeIncidents', 'active_incidents').replace('bdpRates', 'bdp_rates').replace('bdpLendingRates', 'bdp_lending_rates').replace('bdpMeta', 'bdp_meta') : (m) => m
 
   return (
     <div style={{ minHeight: '100vh', background: '#F8FAFC' }}>
@@ -213,7 +224,7 @@ export default function SdkDocs() {
               }}>
                 <code style={{ background: '#EEF2FF', color: '#4F46E5', borderRadius: '0.4rem', padding: '0.2rem 0.6rem', fontSize: '0.82rem', fontFamily: 'ui-monospace, monospace', whiteSpace: 'nowrap', fontWeight: 600 }}>
                   {lang === 'py'
-                    ? method.replace('fuelStations', 'fuel_stations').replace('weatherCity', 'weather_city').replace('weatherWarnings', 'weather_warnings').replace('activeIncidents', 'active_incidents')
+                    ? method.replace('fuelStations', 'fuel_stations').replace('weatherCity', 'weather_city').replace('weatherWarnings', 'weather_warnings').replace('activeIncidents', 'active_incidents').replace('bdpRates', 'bdp_rates').replace('bdpLendingRates', 'bdp_lending_rates').replace('bdpMeta', 'bdp_meta')
                     : method}
                 </code>
                 <span style={{ color: '#475569', fontSize: '0.88rem', flex: 1, minWidth: '160px' }}>{desc}</span>

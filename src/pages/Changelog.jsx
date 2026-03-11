@@ -3,6 +3,29 @@ import { ArrowLeft, GitCommit, Star, Shield, Zap, Database, ShieldAlert, BarChar
 
 const RELEASES = [
   {
+    date: '2026-03-11',
+    version: 'Sprint 7 — SDK v1.1.0 + BdP Integration',
+    tag: 'Novo',
+    tagColor: '#7C3AED',
+    tagBg: '#F5F3FF',
+    items: [
+      {
+        icon: Code,
+        color: '#7C3AED',
+        title: 'SDKs v1.1.0 — Suporte Banco de Portugal',
+        desc: 'Tanto o apiaberta-js como o apiaberta-py foram actualizados para incluir os métodos do connector-bdp. Disponíveis nas últimas versões de ambos os SDKs.',
+        endpoints: ['bdpRates() / bdp_rates()', 'bdpLendingRates() / bdp_lending_rates()', 'bdpMeta() / bdp_meta()']
+      },
+      {
+        icon: Database,
+        color: '#1D4ED8',
+        title: 'Housekeeping — Sync VPS ↔ GitHub',
+        desc: 'Corrijo paths desactualizados nos ficheiros de ecosystem (/root → /data) em gateway e connector-fuel. Adicionados package-lock.json em connector-ine, connector-anpc e connector-bdp. Criados .gitignore, ecosystem.config.cjs e README.md completo para connector-bdp.',
+        endpoints: []
+      }
+    ]
+  },
+  {
     date: '2026-03-10',
     version: 'Sprint 6 — Webhooks + Banco de Portugal',
     tag: 'Novo',
