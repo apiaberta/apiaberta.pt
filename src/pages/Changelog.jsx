@@ -1,7 +1,37 @@
 import { Link } from 'react-router-dom'
-import { ArrowLeft, GitCommit, Star, Shield, Zap, Database, ShieldAlert, BarChart2, TrendingUp, Webhook, Code } from 'lucide-react'
+import { ArrowLeft, GitCommit, Star, Shield, Zap, Database, ShieldAlert, BarChart2, TrendingUp, Webhook, Code, MapPin } from 'lucide-react'
 
 const RELEASES = [
+  {
+    date: '2026-03-12',
+    version: 'Sprint 8 — Geo SDKs + CLI v1.1.0',
+    tag: 'Novo',
+    tagColor: '#16A34A',
+    tagBg: '#ECFDF5',
+    items: [
+      {
+        icon: Code,
+        color: '#7C3AED',
+        title: 'SDKs v1.2.0 — Suporte Dados Geográficos',
+        desc: 'apiaberta-js e apiaberta-py actualizados com métodos completos para o connector-geo. TypeScript definitions actualizadas. 16/16 e 20/20 testes a passar.',
+        endpoints: ['geoDistricts() / geo_districts()', 'geoMunicipalities() / geo_municipalities()', 'geoMunicipality() / geo_municipality()', 'geoParishes() / geo_parishes()', 'geoPostal() / geo_postal()']
+      },
+      {
+        icon: Zap,
+        color: '#16A34A',
+        title: 'CLI v1.1.0 — Novos comandos: geo, bdp-rates, bdp-lending',
+        desc: 'Três novos comandos no CLI apiaberta: dados geográficos (distritos, municípios, códigos postais), taxas BCE do Banco de Portugal, e taxas de crédito/depósitos portuguesas.',
+        endpoints: ['apiaberta geo [--district=X] [--postal=XXXX-XXX]', 'apiaberta bdp-rates', 'apiaberta bdp-lending']
+      },
+      {
+        icon: Database,
+        color: '#DC2626',
+        title: 'Fix: connector-geo health endpoint',
+        desc: 'O connector-geo registava todas as rotas sob o prefixo /geo (incluindo /health), fazendo com que o gateway reportasse o serviço como "down". Adicionado endpoint /health ao nível raiz. API Aberta volta a reportar status "ok".',
+        endpoints: []
+      }
+    ]
+  },
   {
     date: '2026-03-11',
     version: 'Sprint 7 — SDK v1.1.0 + BdP Integration',
