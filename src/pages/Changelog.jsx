@@ -3,6 +3,36 @@ import { ArrowLeft, GitCommit, Star, Shield, Zap, Database, ShieldAlert, BarChar
 
 const RELEASES = [
   {
+    date: '2026-03-13',
+    version: 'Sprint 9 — Webhooks UI + Novos Eventos',
+    tag: 'Novo',
+    tagColor: '#16A34A',
+    tagBg: '#ECFDF5',
+    items: [
+      {
+        icon: Webhook,
+        color: '#6366F1',
+        title: 'Dev Portal — Gestão de Webhooks',
+        desc: 'Nova página no dev portal (app.apiaberta.pt/webhooks) para gerir subscrições directamente no browser. Criação, listagem, remoção e historial de entregas por webhook — sem código, sem API key manual.',
+        endpoints: ['app.apiaberta.pt/webhooks']
+      },
+      {
+        icon: Database,
+        color: '#D97706',
+        title: 'Dois novos eventos webhook',
+        desc: 'O sistema de webhooks passa a suportar 5 eventos: base.contract.new (novo contrato público em BASE.gov.pt) e ev.prices.updated (actualização de preços OMIE no mercado ibérico de electricidade).',
+        endpoints: ['base.contract.new', 'ev.prices.updated']
+      },
+      {
+        icon: Zap,
+        color: '#16A34A',
+        title: 'Housekeeping — connector-geo',
+        desc: 'Adicionado package-lock.json ao connector-geo para instalações reproduzíveis. Commitado e sincronizado com GitHub.',
+        endpoints: []
+      }
+    ]
+  },
+  {
     date: '2026-03-12',
     version: 'Sprint 8 — Geo SDKs + CLI v1.1.0',
     tag: 'Novo',
