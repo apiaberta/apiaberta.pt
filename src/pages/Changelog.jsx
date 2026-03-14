@@ -3,6 +3,29 @@ import { ArrowLeft, GitCommit, Star, Shield, Zap, Database, ShieldAlert, BarChar
 
 const RELEASES = [
   {
+    date: '2026-03-14',
+    version: 'Sprint 10 — API Playground',
+    tag: 'Novo',
+    tagColor: '#16A34A',
+    tagBg: '#ECFDF5',
+    items: [
+      {
+        icon: Code,
+        color: '#16A34A',
+        title: 'Dev Portal — API Playground',
+        desc: 'Nova página no dev portal (app.apiaberta.pt/playground) para testar endpoints directamente no browser. Selecciona qualquer um dos 27+ endpoints disponíveis, preenche parâmetros, executa e vê a resposta com syntax highlighting. Inclui comando curl auto-gerado.',
+        endpoints: ['app.apiaberta.pt/playground']
+      },
+      {
+        icon: Zap,
+        color: '#F59E0B',
+        title: 'Fix: apiaberta-contact — LOG_FILE path corrigido',
+        desc: 'O serviço de contacto escrevia submissions para /root/... mas corre como utilizador david. Caminho corrigido para /data/apiaberta/apiaberta-contact/submissions.jsonl.',
+        endpoints: []
+      }
+    ]
+  },
+  {
     date: '2026-03-13',
     version: 'Sprint 9 — Webhooks UI + Novos Eventos',
     tag: 'Novo',
