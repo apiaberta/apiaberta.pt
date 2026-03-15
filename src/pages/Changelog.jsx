@@ -3,6 +3,36 @@ import { ArrowLeft, GitCommit, Star, Shield, Zap, Database, ShieldAlert, BarChar
 
 const RELEASES = [
   {
+    date: '2026-03-15',
+    version: 'Sprint 11 — Key Rotation + OG Image',
+    tag: 'Novo',
+    tagColor: '#16A34A',
+    tagBg: '#ECFDF5',
+    items: [
+      {
+        icon: Shield,
+        color: '#16A34A',
+        title: 'API Key Rotation no Dev Portal',
+        desc: 'Os developers podem agora rodar a sua API key directamente no dashboard (app.apiaberta.pt). Ao clicar em "Rotate API key", aparece um aviso antes da confirmação — a chave antiga é imediatamente invalidada e a nova revelada. Endpoint: POST /v1/auth/rotate-key.',
+        endpoints: ['POST /v1/auth/rotate-key']
+      },
+      {
+        icon: Star,
+        color: '#6366F1',
+        title: 'OG Image real para partilha social',
+        desc: 'Substituído o placeholder 1×1 por uma imagem real 1200×630px. Dark navy com acentos verdes, título em destaque e os 8 endpoints listados. Aparece agora correctamente no Twitter/X, LinkedIn, Discord e WhatsApp ao partilhar apiaberta.pt.',
+        endpoints: []
+      },
+      {
+        icon: Zap,
+        color: '#F59E0B',
+        title: 'Housekeeping: connector-ev .env.example + CI/CD GitHub Actions fixado',
+        desc: 'Adicionado .env.example ao connector-ev (era o único que faltava). Secrets de deploy VPS configurados no GitHub Actions — o pipeline app.apiaberta.pt volta a deployar automaticamente em cada push.',
+        endpoints: []
+      }
+    ]
+  },
+  {
     date: '2026-03-14',
     version: 'Sprint 10 — API Playground',
     tag: 'Novo',
