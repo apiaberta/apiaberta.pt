@@ -3,6 +3,36 @@ import { ArrowLeft, GitCommit, Star, Shield, Zap, Database, ShieldAlert, BarChar
 
 const RELEASES = [
   {
+    date: '2026-03-16',
+    version: 'Sprint 12 — Webhook Test Delivery + CI/CD site',
+    tag: 'Novo',
+    tagColor: '#16A34A',
+    tagBg: '#ECFDF5',
+    items: [
+      {
+        icon: Webhook,
+        color: '#6366F1',
+        title: 'Webhook Test Delivery',
+        desc: 'Os developers podem agora testar os seus webhooks directamente no dev portal. O botão "Testar" envia uma entrega real ao endpoint configurado (event: test.ping), assinalada com HMAC-SHA256. O resultado aparece imediatamente na UI e fica registado no histórico de entregas.',
+        endpoints: ['POST /v1/webhooks/:id/test']
+      },
+      {
+        icon: Zap,
+        color: '#F59E0B',
+        title: 'CI/CD automático para apiaberta.pt',
+        desc: 'O site principal tem agora deploy automático via GitHub Actions. Cada push ao branch main despoleta build Vite + rsync para o VPS. Parity com o dev portal (app.apiaberta.pt) que já tinha CI/CD.',
+        endpoints: []
+      },
+      {
+        icon: Shield,
+        color: '#0EA5E9',
+        title: 'Gateway v0.3.1',
+        desc: 'Versão do gateway actualizada para 0.3.1 — reflecte o endpoint /v1/auth/rotate-key adicionado no Sprint 11. Visível em /v1/status.',
+        endpoints: ['GET /v1/status']
+      }
+    ]
+  }, 
+  {
     date: '2026-03-15',
     version: 'Sprint 11 — Key Rotation + OG Image',
     tag: 'Novo',
