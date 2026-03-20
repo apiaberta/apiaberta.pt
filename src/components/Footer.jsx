@@ -150,9 +150,27 @@ export default function Footer() {
             gap: '1rem',
           }}
         >
-          <p style={{ fontSize: '0.875rem', color: '#475569' }}>
-            {t('footer.rights')}
-          </p>
+          <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            <p style={{ fontSize: '0.875rem', color: '#475569' }}>
+              {t('footer.rights')}
+            </p>
+            <Link
+              to="/termos"
+              style={{ fontSize: '0.8rem', color: '#64748B', textDecoration: 'none' }}
+              onMouseOver={(e) => (e.currentTarget.style.color = '#4ADE80')}
+              onMouseOut={(e) => (e.currentTarget.style.color = '#64748B')}
+            >
+              Termos de Uso
+            </Link>
+            <Link
+              to="/privacidade"
+              style={{ fontSize: '0.8rem', color: '#64748B', textDecoration: 'none' }}
+              onMouseOver={(e) => (e.currentTarget.style.color = '#4ADE80')}
+              onMouseOut={(e) => (e.currentTarget.style.color = '#64748B')}
+            >
+              Privacidade
+            </Link>
+          </div>
           <p style={{ fontSize: '0.875rem', color: '#475569' }}>
             {t('footer.built')}
           </p>

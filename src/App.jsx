@@ -3,6 +3,7 @@ import { LanguageProvider } from './contexts/LanguageContext'
 import { ApiProvider } from './contexts/ApiContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import CookieBanner from './components/CookieBanner'
 import Home from './pages/Home'
 import Contribute from './pages/Contribute'
 import ContactPage from './pages/ContactPage'
@@ -17,6 +18,8 @@ import DadosBdp from './pages/DadosBdp'
 import Changelog from './pages/Changelog'
 import SdkDocs from './pages/SdkDocs'
 import DadosGeo from './pages/DadosGeo'
+import Termos from './pages/Termos'
+import Privacidade from './pages/Privacidade'
 
 export default function App() {
   return (
@@ -41,9 +44,12 @@ export default function App() {
               <Route path="/dados/taxas-juro" element={<DadosBdp />} />
               <Route path="/dados/geo" element={<DadosGeo />} />
               <Route path="/sdk" element={<SdkDocs />} />
+              <Route path="/termos" element={<Termos />} />
+              <Route path="/privacidade" element={<Privacidade />} />
             </Routes>
           </main>
           <Footer />
+          <CookieBanner />
         </BrowserRouter>
       </ApiProvider>
     </LanguageProvider>
