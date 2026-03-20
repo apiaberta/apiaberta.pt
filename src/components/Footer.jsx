@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 import LanguageSwitcher from './LanguageSwitcher'
 
-const dadosLinks = [
-  { label: 'Combustíveis', path: '/dados/combustivel' },
-  { label: 'Meteorologia', path: '/dados/tempo' },
-  { label: 'Carregamento EV', path: '/dados/ev' },
-  { label: 'Contratos Públicos', path: '/dados/contratos-publicos' },
-  { label: 'Estatísticas', path: '/dados/estatisticas' },
-  { label: 'Proteção Civil', path: '/dados/protecao-civil' },
-  { label: 'Taxas de Juro', path: '/dados/taxas-juro' },
-  { label: 'Dados Geográficos', path: '/dados/geo' },
-]
-
 export default function Footer() {
   const { t } = useLanguage()
+
+  const dadosLinks = [
+    { key: 'fuel', path: '/dados/combustivel' },
+    { key: 'weather', path: '/dados/tempo' },
+    { key: 'ev', path: '/dados/ev' },
+    { key: 'contracts', path: '/dados/contratos-publicos' },
+    { key: 'stats', path: '/dados/estatisticas' },
+    { key: 'civilprotection', path: '/dados/protecao-civil' },
+    { key: 'rates', path: '/dados/taxas-juro' },
+    { key: 'geo', path: '/dados/geo' },
+  ]
 
   const links = [
     { label: t('footer.github'), href: 'https://github.com/apiaberta' },
@@ -68,7 +68,7 @@ export default function Footer() {
           {/* Dados column */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             <p style={{ fontSize: '0.8rem', color: '#475569', marginBottom: '0.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              Dados
+              {t('footer.data')}
             </p>
             {dadosLinks.map((item) => (
               <Link
@@ -83,7 +83,7 @@ export default function Footer() {
                 onMouseOver={(e) => (e.currentTarget.style.color = '#4ADE80')}
                 onMouseOut={(e) => (e.currentTarget.style.color = '#94A3B8')}
               >
-                {item.label}
+                {t(`footer.data.${item.key}`)}
               </Link>
             ))}
           </div>
@@ -127,14 +127,14 @@ export default function Footer() {
               onMouseOut={(e) => (e.currentTarget.style.color = '#94A3B8')}
             >
               <List size={14} />
-              Changelog
+              {t('footer.changelog')}
             </Link>
           </div>
 
           {/* Language switcher */}
           <div>
             <p style={{ fontSize: '0.8rem', color: '#475569', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              Language / Idioma
+              {t('footer.language')}
             </p>
             <LanguageSwitcher />
           </div>
