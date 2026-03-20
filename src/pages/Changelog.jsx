@@ -1,7 +1,51 @@
 import { Link } from 'react-router-dom'
-import { ArrowLeft, GitCommit, Star, Shield, Zap, Database, ShieldAlert, BarChart2, TrendingUp, Webhook, Code, MapPin } from 'lucide-react'
+import { ArrowLeft, GitCommit, Star, Shield, Zap, Database, ShieldAlert, BarChart2, TrendingUp, Webhook, Code, MapPin, FileText, Cookie, Trash2, Smartphone } from 'lucide-react'
 
 const RELEASES = [
+  {
+    date: '2026-03-20',
+    version: 'Sprint 15 — Legal & RGPD + Mobile UX',
+    tag: 'Novo',
+    tagColor: '#16A34A',
+    tagBg: '#ECFDF5',
+    items: [
+      {
+        icon: Trash2,
+        color: '#DC2626',
+        title: 'Delete Account com período de graça',
+        desc: 'Os developers podem agora solicitar a eliminação da sua conta no Settings. A conta é marcada para eliminação em 30 dias — se fizerem login nesse período, a eliminação é cancelada automaticamente. Cumpre RGPD art. 17 (direito ao esquecimento).',
+        endpoints: ['DELETE /v1/auth/account']
+      },
+      {
+        icon: FileText,
+        color: '#6366F1',
+        title: 'Termos de Uso & Política de Privacidade',
+        desc: 'Duas novas páginas em português de Portugal: /termos com as regras de utilização da API (rate limits, uso proibido, isenção de responsabilidade) e /privacidade com política RGPD-compliant (dados recolhidos, finalidade, direitos do utilizador).',
+        endpoints: ['/termos', '/privacidade']
+      },
+      {
+        icon: Cookie,
+        color: '#F59E0B',
+        title: 'Cookie Banner',
+        desc: 'Banner discreto no footer a informar sobre cookies essenciais e analytics (Umami). A preferência é guardada em localStorage — aparece apenas uma vez.',
+        endpoints: []
+      },
+      {
+        icon: Smartphone,
+        color: '#0EA5E9',
+        title: 'Playground & Navbar Mobile-friendly',
+        desc: 'A página /playground no dev portal tem agora um selector de endpoints colapsável em mobile. A navbar do dev portal passou a ter hamburger menu em ecrãs pequenos.',
+        endpoints: ['app.apiaberta.pt/playground']
+      },
+      {
+        icon: Star,
+        color: '#10B981',
+        title: 'Footer i18n completo',
+        desc: 'Todas as strings do footer (dados, idioma, changelog) estão agora traduzidas PT/EN. Links para termos e privacidade adicionados.',
+        endpoints: []
+      }
+    ]
+  },
   {
     date: '2026-03-16',
     version: 'Sprint 12 — Webhook Test Delivery + CI/CD site',
