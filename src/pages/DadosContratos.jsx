@@ -5,12 +5,12 @@ import { FileText, ArrowLeft, RefreshCw, AlertTriangle, Search } from 'lucide-re
 const API_URL = 'https://api.apiaberta.pt/v1/base/contracts'
 
 function ContractRow({ contract }) {
-  const value = contract.contract_value_eur
-    ? `${contract.contract_value_eur.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€`
+  const value = contract.value
+    ? `${contract.value.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€`
     : '—'
   
-  const date = contract.signing_date
-    ? new Date(contract.signing_date).toLocaleDateString('pt-PT', { day: 'numeric', month: 'short', year: 'numeric' })
+  const date = contract.date
+    ? new Date(contract.date).toLocaleDateString('pt-PT', { day: 'numeric', month: 'short', year: 'numeric' })
     : '—'
 
   return (
@@ -26,10 +26,10 @@ function ContractRow({ contract }) {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', flexWrap: 'wrap' }}>
         <div style={{ flex: 1, minWidth: '200px' }}>
           <div style={{ fontWeight: 700, color: '#0F172A', fontSize: '0.95rem', marginBottom: '0.25rem' }}>
-            {contract.contracting_entity || 'Entidade contratante'}
+            {contract.contractingEntity || 'Entidade contratante'}
           </div>
           <div style={{ color: '#64748B', fontSize: '0.85rem' }}>
-            → {contract.contractor || 'Fornecedor'}
+            → {contract.awarded || 'Fornecedor'}
           </div>
         </div>
         <div style={{ textAlign: 'right' }}>
@@ -41,14 +41,14 @@ function ContractRow({ contract }) {
           </div>
         </div>
       </div>
-      {contract.object && (
+      {contract.description && (
         <div style={{
           color: '#475569',
           fontSize: '0.85rem',
           paddingTop: '0.5rem',
           borderTop: '1px solid #F1F5F9'
         }}>
-          {contract.object}
+          {contract.description}
         </div>
       )}
     </div>
@@ -81,13 +81,13 @@ export default function DadosContratos() {
   const contracts = data?.data || []
   const filtered = searchTerm
     ? contracts.filter(c =>
-        [c.contracting_entity, c.contractor, c.object]
+        [c.contractingEntity, c.awarded, c.description]
           .filter(Boolean)
           .some(field => field.toLowerCase().includes(searchTerm.toLowerCase()))
       )
     : contracts
 
-  const totalValue = filtered.reduce((sum, c) => sum + (c.contract_value_eur || 0), 0)
+  const totalValue = filtered.reduce((sum, c) => sum + (c.value || 0), 0)
 
   return (
     <div className="pt-16 min-h-screen" style={{ background: '#FAFAFA' }}>
@@ -190,7 +190,7 @@ export default function DadosContratos() {
                     CONTRATOS
                   </div>
                   <div style={{ fontSize: '1.75rem', fontWeight: 900, color: '#0F172A' }}>
-                    {filtered.length}
+                    {data?.total ? data.total.toLocaleString('pt-PT') : filtered.length}
                   </div>
                 </div>
                 <div style={{ textAlign: 'center' }}>
@@ -238,7 +238,7 @@ export default function DadosContratos() {
               <p style={{ color: '#475569', fontSize: '0.85rem', margin: 0 }}>
                 <strong>API:</strong>{' '}
                 <code style={{ color: '#16A34A', background: '#F0FDF4', padding: '0.15rem 0.375rem', borderRadius: '0.25rem' }}>
-                  GET https://api.apiaberta.pt/v1/contracts/recent
+                  GET https://api.apiaberta.pt/v1/base/contracts
                 </code>
               </p>
             </div>
