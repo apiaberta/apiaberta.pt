@@ -60,12 +60,16 @@ export default function DadosContratos() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
+  const [year, setYear] = useState('all')
 
   const load = async () => {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch(`${API_URL}?limit=50`)
+      const url = year && year !== 'all'
+        ? `${API_URL}?year=${year}&limit=50`
+        : `${API_URL}?limit=50`
+      const res = await fetch(url)
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const json = await res.json()
       setData(json)
@@ -76,7 +80,7 @@ export default function DadosContratos() {
     }
   }
 
-  useEffect(() => { load() }, [])
+  useEffect(() => { load() }, [year])
 
   const contracts = data?.data || []
   const filtered = searchTerm
@@ -145,6 +149,35 @@ export default function DadosContratos() {
 
         {!loading && !error && (
           <>
+            {/* Year filter */}
+            <div style={{
+              display: 'flex',
+              gap: '0.5rem',
+              flexWrap: 'wrap',
+              marginBottom: '1.5rem'
+            }}>
+              {[2026,2025,2024,2023,2022,2021,2020,2019,2018,2017,2016,2015,2014,2013,2012].map(y => (
+                <button
+                  key={y}
+                  onClick={() => setYear(y.toString())}
+                  style={{
+                    padding: '0.375rem 0.875rem',
+                    borderRadius: '2rem',
+                    border: '1.5px solid',
+                    borderColor: year === y.toString() ? '#7C3AED' : '#E2E8F0',
+                    background: year === y.toString() ? '#7C3AED' : 'white',
+                    color: year === y.toString() ? 'white' : '#64748B',
+                    fontSize: '0.85rem',
+                    fontWeight: year === y.toString() ? 600 : 400,
+                    cursor: 'pointer',
+                    transition: 'all 0.15s'
+                  }}
+                >
+                  {y}
+                </button>
+              ))}
+            </div>
+
             {/* Search bar */}
             <div style={{
               background: 'white',
