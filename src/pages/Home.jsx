@@ -8,6 +8,7 @@ import QuickStart from '../components/QuickStart'
 import GettingStarted from '../components/GettingStarted'
 import Roadmap from '../components/Roadmap'
 import Contact from '../components/Contact'
+import DeveloperCta from '../components/DeveloperCta'
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <GettingStarted />
       <Roadmap />
       <Contact />
+      <DeveloperCta />
     </>
   )
 }
