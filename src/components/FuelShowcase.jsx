@@ -212,6 +212,8 @@ export default function FuelShowcase() {
           </p>
           <a
             href="https://app.apiaberta.pt/register"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
               background: '#16a34a', color: '#fff',

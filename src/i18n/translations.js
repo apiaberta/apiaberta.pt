@@ -10,9 +10,11 @@ const translations = {
     // Hero
     'hero.headline': 'Os dados públicos portugueses merecem uma API moderna',
     'hero.subheadline': 'API Aberta é uma iniciativa open-source para unificar, normalizar e disponibilizar dados do governo português numa única API REST.',
-    'hero.cta.primary': 'Quero Contribuir',
+    'hero.cta.primary': 'Criar conta grátis',
+    'hero.cta.supporting': 'Obtém a tua chave de API e começa a usar a API Aberta em minutos.',
     'hero.cta.secondary': 'Ver documentação',
     'hero.badge': 'Iniciativa open-source',
+    'cta.bottom.title': 'Pronto para começar?',
 
     // Problem
     'problem.title': 'O problema',
@@ -91,7 +93,7 @@ const translations = {
     'gs.step1.body': 'Todos os endpoints públicos funcionam sem registo. Basta fazer um fetch.',
     'gs.step2.title': 'Registar para mais quota',
     'gs.step2.body': 'Precisas de mais requests por dia? Cria uma conta gratuita e passa a API key no header.',
-    'gs.step2.cta': 'Criar conta gratuita',
+    'gs.step2.cta': 'Criar conta grátis',
     'gs.step3.title': 'Tratar erros',
     'gs.step3.body': 'A API devolve erros HTTP padrão. Eis os mais comuns:',
     'gs.step4.title': 'Próximos passos',
@@ -177,9 +179,11 @@ const translations = {
     // Hero
     'hero.headline': 'Portuguese public data deserves a modern API',
     'hero.subheadline': 'API Aberta is an open-source initiative to unify, normalise and make Portuguese government data available through a single REST API.',
-    'hero.cta.primary': 'I Want to Contribute',
+    'hero.cta.primary': 'Create a free account',
+    'hero.cta.supporting': 'Get your API key and start using API Aberta in minutes.',
     'hero.cta.secondary': 'See documentation',
     'hero.badge': 'Open-source initiative',
+    'cta.bottom.title': 'Ready to get started?',
 
     // Problem
     'problem.title': 'The Problem',

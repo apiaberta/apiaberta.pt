@@ -1,5 +1,8 @@
-import { ArrowRight, Github } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
+
+const REGISTER_URL = 'https://app.apiaberta.pt/register'
+const DOCS_URL = 'https://docs.apiaberta.pt'
 
 export default function Hero() {
   const { t } = useLanguage()
@@ -97,70 +100,106 @@ export default function Hero() {
         <div
           style={{
             display: 'flex',
-            gap: '1rem',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '0.875rem',
           }}
         >
-          <a
-            href="https://github.com/apiaberta"
-            target="_blank"
-            rel="noopener noreferrer"
+          <div
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              background: '#16A34A',
-              color: 'white',
-              padding: '0.875rem 2rem',
-              borderRadius: '0.5rem',
-              fontWeight: 700,
-              fontSize: '1rem',
-              textDecoration: 'none',
-              transition: 'all 0.2s',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.background = '#15803D'
-              e.currentTarget.style.transform = 'translateY(-2px)'
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.background = '#16A34A'
-              e.currentTarget.style.transform = 'translateY(0)'
+              display: 'flex',
+              gap: '1rem',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
             }}
           >
-            <Github size={18} />
-            {t('hero.cta.primary')}
-          </a>
-          <a
-            href="https://github.com/apiaberta/apiaberta"
-            target="_blank"
-            rel="noopener noreferrer"
+            <a
+              href={REGISTER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-describedby="hero-cta-supporting"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                background: '#16A34A',
+                color: 'white',
+                padding: '0.875rem 2rem',
+                borderRadius: '0.5rem',
+                fontWeight: 700,
+                fontSize: '1rem',
+                textDecoration: 'none',
+                transition: 'all 0.2s',
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.background = '#15803D'
+                e.currentTarget.style.transform = 'translateY(-2px)'
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.background = '#16A34A'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.outline = '2px solid #4ADE80'
+                e.currentTarget.style.outlineOffset = '3px'
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.outline = 'none'
+              }}
+            >
+              {t('hero.cta.primary')}
+              <ArrowRight size={18} aria-hidden="true" />
+            </a>
+            <a
+              href={DOCS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                background: 'transparent',
+                color: 'white',
+                padding: '0.875rem 2rem',
+                borderRadius: '0.5rem',
+                fontWeight: 600,
+                fontSize: '1rem',
+                textDecoration: 'none',
+                border: '2px solid rgba(255,255,255,0.25)',
+                transition: 'all 0.2s',
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.6)'
+                e.currentTarget.style.transform = 'translateY(-2px)'
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.outline = '2px solid #4ADE80'
+                e.currentTarget.style.outlineOffset = '3px'
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.outline = 'none'
+              }}
+            >
+              {t('hero.cta.secondary')}
+              <ArrowRight size={16} aria-hidden="true" />
+            </a>
+          </div>
+          <p
+            id="hero-cta-supporting"
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              background: 'transparent',
-              color: 'white',
-              padding: '0.875rem 2rem',
-              borderRadius: '0.5rem',
-              fontWeight: 600,
-              fontSize: '1rem',
-              textDecoration: 'none',
-              border: '2px solid rgba(255,255,255,0.25)',
-              transition: 'all 0.2s',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.6)'
-              e.currentTarget.style.transform = 'translateY(-2px)'
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'
-              e.currentTarget.style.transform = 'translateY(0)'
+              fontSize: '0.9375rem',
+              color: '#94A3B8',
+              maxWidth: '32rem',
+              margin: 0,
+              lineHeight: 1.6,
             }}
           >
-            {t('hero.cta.secondary')}
-            <ArrowRight size={16} />
-          </a>
+            {t('hero.cta.supporting')}
+          </p>
         </div>
 
         {/* Stats row */}
