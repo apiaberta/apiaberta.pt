@@ -9,7 +9,13 @@ const translations = {
 
     // Hero
     'hero.headline': 'Os dados públicos portugueses merecem uma API moderna',
-    'hero.subheadline': 'API Aberta é uma iniciativa open-source para unificar, normalizar e disponibilizar dados do governo português numa única API REST.',
+    'hero.subheadline': 'Combustíveis, meteorologia, contratos públicos e mais, numa única API REST gratuita e open-source.',
+    'hero.stat.opensource': 'Open source',
+    'hero.stat.free': 'Para devs',
+    'hero.stat.rest': 'API moderna',
+    'hero.code.label': 'Exemplo de pedido e resposta da API de combustíveis',
+    'hero.code.live': 'Resposta real, agora mesmo',
+    'hero.code.sample': 'Exemplo de resposta',
     'hero.cta.primary': 'Criar conta grátis',
     'hero.cta.supporting': 'Obtém a tua chave de API e começa a usar a API Aberta em minutos.',
     'hero.cta.secondary': 'Ver documentação',
@@ -178,7 +184,13 @@ const translations = {
 
     // Hero
     'hero.headline': 'Portuguese public data deserves a modern API',
-    'hero.subheadline': 'API Aberta is an open-source initiative to unify, normalise and make Portuguese government data available through a single REST API.',
+    'hero.subheadline': 'Fuel prices, weather, public contracts and more, in one free, open-source REST API.',
+    'hero.stat.opensource': 'Open source',
+    'hero.stat.free': 'For devs',
+    'hero.stat.rest': 'Modern API',
+    'hero.code.label': 'Example request and response from the fuel prices API',
+    'hero.code.live': 'Live response, right now',
+    'hero.code.sample': 'Sample response',
     'hero.cta.primary': 'Create a free account',
     'hero.cta.supporting': 'Get your API key and start using API Aberta in minutes.',
     'hero.cta.secondary': 'See documentation',

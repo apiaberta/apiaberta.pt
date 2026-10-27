@@ -15,26 +15,10 @@ export default function WhoWeNeed() {
   const { t } = useLanguage()
 
   return (
-    <section id="contribute" style={{ padding: '6rem 1.5rem', background: '#F8FAFC' }}>
+    <section id="contribute" style={{ padding: 'var(--section-y) 1.5rem', background: '#F8FAFC' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-          <span
-            style={{
-              display: 'inline-block',
-              background: '#F0FDF4',
-              color: '#16A34A',
-              padding: '0.25rem 0.875rem',
-              borderRadius: '9999px',
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              marginBottom: '1rem',
-            }}
-          >
-            {t('nav.contribute')}
-          </span>
           <h2 className="section-title">{t('who.title')}</h2>
           <p className="section-subtitle">{t('who.subtitle')}</p>
         </div>

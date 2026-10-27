@@ -1,3 +1,4 @@
+import { Check, Loader, Circle } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const roadmapItems = [
@@ -12,21 +13,21 @@ const roadmapItems = [
 
 const statusConfig = {
   done: {
-    emoji: '✅',
+    Icon: Check,
     label: 'Concluído / Done',
     dotColor: '#16A34A',
     dotBg: '#F0FDF4',
     lineColor: '#16A34A',
   },
   'in-progress': {
-    emoji: '🔄',
+    Icon: Loader,
     label: 'Em progresso / In progress',
     dotColor: '#F59E0B',
     dotBg: '#FFFBEB',
     lineColor: '#F59E0B',
   },
   todo: {
-    emoji: '⬜',
+    Icon: Circle,
     label: 'Por fazer / To do',
     dotColor: '#CBD5E1',
     dotBg: '#F8FAFC',
@@ -38,26 +39,10 @@ export default function Roadmap() {
   const { t } = useLanguage()
 
   return (
-    <section id="roadmap" style={{ padding: '6rem 1.5rem', background: '#FAFAFA' }}>
+    <section id="roadmap" style={{ padding: 'var(--section-y) 1.5rem', background: '#FAFAFA' }}>
       <div style={{ maxWidth: '700px', margin: '0 auto' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-          <span
-            style={{
-              display: 'inline-block',
-              background: '#EFF6FF',
-              color: '#3B82F6',
-              padding: '0.25rem 0.875rem',
-              borderRadius: '9999px',
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              marginBottom: '1rem',
-            }}
-          >
-            Roadmap
-          </span>
           <h2 className="section-title">{t('roadmap.title')}</h2>
           <p className="section-subtitle">{t('roadmap.subtitle')}</p>
         </div>
@@ -106,7 +91,7 @@ export default function Roadmap() {
                     zIndex: 1,
                   }}
                 >
-                  {cfg.emoji}
+                  <cfg.Icon size={18} strokeWidth={2.5} color={status === 'todo' ? '#94A3B8' : cfg.dotColor} aria-hidden="true" />
                 </div>
 
                 {/* Content */}

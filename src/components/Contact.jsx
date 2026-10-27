@@ -33,26 +33,10 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" style={{ padding: '6rem 1.5rem', background: '#F8FAFC' }}>
+    <section id="contact" style={{ padding: 'var(--section-y) 1.5rem', background: '#F8FAFC' }}>
       <div style={{ maxWidth: '640px', margin: '0 auto' }}>
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <span
-            style={{
-              display: 'inline-block',
-              background: '#F0FDF4',
-              color: '#16A34A',
-              padding: '0.25rem 0.875rem',
-              borderRadius: '9999px',
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              marginBottom: '1rem',
-            }}
-          >
-            {t('nav.contact')}
-          </span>
+        <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <h2 className="section-title">{t('contact.title')}</h2>
           <p className="section-subtitle">{t('contact.subtitle')}</p>
         </div>

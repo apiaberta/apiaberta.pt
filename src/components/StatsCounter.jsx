@@ -66,18 +66,6 @@ export default function StatsCounter() {
       }}
     >
       <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-        <p
-          style={{
-            color: '#4ADE80',
-            fontWeight: 700,
-            fontSize: '0.75rem',
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-            marginBottom: '2.5rem',
-          }}
-        >
-          Plataforma em números
-        </p>
 
         <div
           style={{
