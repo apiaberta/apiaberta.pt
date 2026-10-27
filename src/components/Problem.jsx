@@ -11,26 +11,10 @@ export default function Problem() {
   const { t } = useLanguage()
 
   return (
-    <section id="problem" style={{ padding: '6rem 1.5rem', background: '#F8FAFC' }}>
+    <section id="problem" style={{ padding: 'var(--section-y) 1.5rem', background: '#F8FAFC' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-          <span
-            style={{
-              display: 'inline-block',
-              background: '#FEF2F2',
-              color: '#EF4444',
-              padding: '0.25rem 0.875rem',
-              borderRadius: '9999px',
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              marginBottom: '1rem',
-            }}
-          >
-            {t('nav.problem')}
-          </span>
           <h2 className="section-title">{t('problem.title')}</h2>
           <p className="section-subtitle">{t('problem.subtitle')}</p>
         </div>

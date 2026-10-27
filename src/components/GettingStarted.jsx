@@ -1,3 +1,4 @@
+import { BookOpen } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const errorExamples = [
@@ -65,24 +66,10 @@ export default function GettingStarted() {
   const { t } = useLanguage()
 
   return (
-    <section style={{ padding: '5rem 1.5rem', background: '#F8FAFC' }}>
+    <section style={{ padding: 'var(--section-y) 1.5rem', background: '#F8FAFC' }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <span style={{
-            display: 'inline-block',
-            background: '#EFF6FF',
-            color: '#3B82F6',
-            padding: '0.25rem 0.875rem',
-            borderRadius: '9999px',
-            fontSize: '0.8rem',
-            fontWeight: 700,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            marginBottom: '1rem',
-          }}>
-            Integração
-          </span>
+        <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <h2 className="section-title">{t('gs.title')}</h2>
           <p className="section-subtitle">{t('gs.subtitle')}</p>
         </div>
@@ -199,7 +186,7 @@ console.log(data); // Funciona — sem API key`}</CodeBlock>
                   textDecoration: 'none',
                 }}
               >
-                📖 {t('gs.step4.docs')}
+                <BookOpen size={16} aria-hidden="true" /> {t('gs.step4.docs')}
               </a>
               <div style={{
                 display: 'flex',

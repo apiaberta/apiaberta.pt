@@ -1,18 +1,18 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Code2, Menu, X } from 'lucide-react'
+import { Code2, Menu, X, Fuel, CloudSun, PlugZap, FileText, BarChart3, Siren, Landmark, Map } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 import LanguageSwitcher from './LanguageSwitcher'
 
 const dadosLinks = [
-  { icon: '⛽', label: 'Combustíveis', path: '/dados/combustivel', desc: 'Preços DGEG actualizados diariamente' },
-  { icon: '🌤', label: 'Meteorologia', path: '/dados/tempo', desc: 'Previsões e avisos IPMA' },
-  { icon: '⚡', label: 'Carregamento EV', path: '/dados/ev', desc: 'Tarifas CEME e preços spot OMIE' },
-  { icon: '📋', label: 'Contratos Públicos', path: '/dados/contratos-publicos', desc: 'Portal Base — contratos do Estado' },
-  { icon: '📊', label: 'Estatísticas', path: '/dados/estatisticas', desc: 'Indicadores INE e Eurostat' },
-  { icon: '🚨', label: 'Proteção Civil', path: '/dados/protecao-civil', desc: 'Ocorrências activas ANEPC' },
-  { icon: '🏦', label: 'Taxas de Juro', path: '/dados/taxas-juro', desc: 'BCE, €STR e Banco de Portugal' },
-  { icon: '🗺️', label: 'Dados Geográficos', path: '/dados/geo', desc: 'Distritos, municípios e códigos postais' },
+  { icon: Fuel, label: 'Combustíveis', path: '/dados/combustivel', desc: 'Preços DGEG actualizados diariamente' },
+  { icon: CloudSun, label: 'Meteorologia', path: '/dados/tempo', desc: 'Previsões e avisos IPMA' },
+  { icon: PlugZap, label: 'Carregamento EV', path: '/dados/ev', desc: 'Tarifas CEME e preços spot OMIE' },
+  { icon: FileText, label: 'Contratos Públicos', path: '/dados/contratos-publicos', desc: 'Portal Base — contratos do Estado' },
+  { icon: BarChart3, label: 'Estatísticas', path: '/dados/estatisticas', desc: 'Indicadores INE e Eurostat' },
+  { icon: Siren, label: 'Proteção Civil', path: '/dados/protecao-civil', desc: 'Ocorrências activas ANEPC' },
+  { icon: Landmark, label: 'Taxas de Juro', path: '/dados/taxas-juro', desc: 'BCE, €STR e Banco de Portugal' },
+  { icon: Map, label: 'Dados Geográficos', path: '/dados/geo', desc: 'Distritos, municípios e códigos postais' },
 ]
 
 export default function Navbar() {
@@ -162,7 +162,7 @@ export default function Navbar() {
                         onMouseOver={(e) => (e.currentTarget.style.background = '#F0FDF4')}
                         onMouseOut={(e) => (e.currentTarget.style.background = 'transparent')}
                       >
-                        <span style={{ fontSize: '1.25rem', lineHeight: 1 }}>{item.icon}</span>
+                        <span aria-hidden="true" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '2rem', height: '2rem', flexShrink: 0, borderRadius: '0.5rem', background: '#F0FDF4', color: '#16A34A' }}><item.icon size={16} /></span>
                         <div>
                           <div style={{ fontWeight: 600, fontSize: '0.875rem', color: '#0F172A' }}>{item.label}</div>
                           <div style={{ fontSize: '0.75rem', color: '#64748B', marginTop: '0.125rem' }}>{item.desc}</div>
@@ -268,7 +268,7 @@ export default function Navbar() {
                       borderRadius: '0.375rem',
                     }}
                   >
-                    <span>{item.icon}</span>
+                    <item.icon size={16} color="#16A34A" aria-hidden="true" />
                     <span>{item.label}</span>
                   </Link>
                 ))}

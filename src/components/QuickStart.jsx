@@ -1,11 +1,13 @@
 import { useState, useEffect, useCallback } from 'react'
+import { Fuel, CloudSun, PlugZap, BarChart3, Siren, Landmark } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const connectors = [
   {
     id: 'fuel',
-    label: '⛽ Combustíveis',
-    labelEn: '⛽ Fuel',
+    icon: Fuel,
+    label: 'Combustíveis',
+    labelEn: 'Fuel',
     url: 'https://api.apiaberta.pt/v1/fuel/prices?limit=3',
     node: { url: `'https://api.apiaberta.pt/v1/fuel/prices?limit=3'` },
     curl: `curl https://api.apiaberta.pt/v1/fuel/prices?limit=3`,
@@ -13,8 +15,9 @@ const connectors = [
   },
   {
     id: 'ipma',
-    label: '🌤 Tempo',
-    labelEn: '🌤 Weather',
+    icon: CloudSun,
+    label: 'Tempo',
+    labelEn: 'Weather',
     url: 'https://api.apiaberta.pt/v1/ipma/forecasts',
     node: { url: `'https://api.apiaberta.pt/v1/ipma/forecasts'` },
     curl: `curl https://api.apiaberta.pt/v1/ipma/forecasts`,
@@ -22,8 +25,9 @@ const connectors = [
   },
   {
     id: 'ev',
-    label: '⚡ EV',
-    labelEn: '⚡ EV',
+    icon: PlugZap,
+    label: 'EV',
+    labelEn: 'EV',
     url: 'https://api.apiaberta.pt/v1/ev/tariffs?limit=3',
     node: { url: `'https://api.apiaberta.pt/v1/ev/tariffs?limit=3'` },
     curl: `curl https://api.apiaberta.pt/v1/ev/tariffs?limit=3`,
@@ -31,8 +35,9 @@ const connectors = [
   },
   {
     id: 'ine',
-    label: '📊 Stats',
-    labelEn: '📊 Stats',
+    icon: BarChart3,
+    label: 'Stats',
+    labelEn: 'Stats',
     url: 'https://api.apiaberta.pt/v1/ine/latest',
     node: { url: `'https://api.apiaberta.pt/v1/ine/latest'` },
     curl: `curl https://api.apiaberta.pt/v1/ine/latest`,
@@ -40,8 +45,9 @@ const connectors = [
   },
   {
     id: 'anpc',
-    label: '🚨 ANPC',
-    labelEn: '🚨 ANPC',
+    icon: Siren,
+    label: 'ANPC',
+    labelEn: 'ANPC',
     url: 'https://api.apiaberta.pt/v1/anpc/incidents/active',
     node: { url: `'https://api.apiaberta.pt/v1/anpc/incidents/active'` },
     curl: `curl https://api.apiaberta.pt/v1/anpc/incidents/active`,
@@ -49,8 +55,9 @@ const connectors = [
   },
   {
     id: 'bdp',
-    label: '🏦 BdP',
-    labelEn: '🏦 BdP',
+    icon: Landmark,
+    label: 'BdP',
+    labelEn: 'BdP',
     url: 'https://api.apiaberta.pt/v1/bdp/rates',
     node: { url: `'https://api.apiaberta.pt/v1/bdp/rates'` },
     curl: `curl https://api.apiaberta.pt/v1/bdp/rates`,
@@ -125,24 +132,10 @@ export default function QuickStart() {
   }
 
   return (
-    <section style={{ padding: '5rem 1.5rem', background: '#0F172A' }}>
+    <section style={{ padding: 'var(--section-y) 1.5rem', background: '#0F172A' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <span style={{
-            display: 'inline-block',
-            background: 'rgba(59,130,246,0.15)',
-            color: '#60A5FA',
-            padding: '0.25rem 0.875rem',
-            borderRadius: '9999px',
-            fontSize: '0.8rem',
-            fontWeight: 700,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            marginBottom: '1rem',
-          }}>
-            Quick Start
-          </span>
+        <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 800, color: '#F8FAFC', margin: '0 0 0.75rem' }}>
             {t('quickstart.title')}
           </h2>
@@ -157,18 +150,23 @@ export default function QuickStart() {
             <button
               key={c.id}
               onClick={() => setActiveConnector(c.id)}
+              aria-pressed={activeConnector === c.id}
               style={{
-                padding: '0.4rem 1rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                padding: '0.45rem 1rem',
                 borderRadius: '9999px',
-                border: activeConnector === c.id ? '2px solid #3B82F6' : '2px solid #334155',
-                background: activeConnector === c.id ? '#1E3A5F' : '#1E293B',
-                color: activeConnector === c.id ? '#93C5FD' : '#94A3B8',
+                border: activeConnector === c.id ? '1px solid rgba(74,222,128,0.45)' : '1px solid #334155',
+                background: activeConnector === c.id ? 'rgba(22,163,74,0.18)' : '#1E293B',
+                color: activeConnector === c.id ? '#BBF7D0' : '#94A3B8',
                 fontWeight: 600,
                 fontSize: '0.875rem',
                 cursor: 'pointer',
                 transition: 'all 0.15s',
               }}
             >
+              <c.icon size={15} aria-hidden="true" />
               {language === 'en' ? c.labelEn : c.label}
             </button>
           ))}

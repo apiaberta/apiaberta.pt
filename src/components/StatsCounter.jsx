@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Zap, Code2, Plug } from 'lucide-react'
 
 function AnimatedNumber({ value, duration = 1500 }) {
   const [display, setDisplay] = useState(0)
@@ -26,19 +27,19 @@ const cards = [
     key: 'api_calls_total',
     label: 'Chamadas à API',
     suffix: '+',
-    icon: '⚡',
+    icon: Zap,
   },
   {
     key: 'developers_registered',
     label: 'Developers registados',
     suffix: '',
-    icon: '👨‍💻',
+    icon: Code2,
   },
   {
     key: 'connectors_active',
     label: 'Conectores activos',
     suffix: '',
-    icon: '🔌',
+    icon: Plug,
   },
 ]
 
@@ -65,18 +66,6 @@ export default function StatsCounter() {
       }}
     >
       <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-        <p
-          style={{
-            color: '#4ADE80',
-            fontWeight: 700,
-            fontSize: '0.75rem',
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-            marginBottom: '2.5rem',
-          }}
-        >
-          Plataforma em números
-        </p>
 
         <div
           style={{
@@ -86,7 +75,7 @@ export default function StatsCounter() {
             flexWrap: 'wrap',
           }}
         >
-          {cards.map(({ key, label, suffix, icon }) => (
+          {cards.map(({ key, label, suffix, icon: Icon }) => (
             <div
               key={key}
               style={{
@@ -96,12 +85,25 @@ export default function StatsCounter() {
                 border: '1px solid rgba(255,255,255,0.08)',
                 borderRadius: '1rem',
                 padding: '2rem 1.5rem',
-                transition: 'border-color 0.2s',
               }}
-              onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(74,222,128,0.3)'}
-              onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}
             >
-              <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{icon}</div>
+              <div
+                aria-hidden="true"
+                style={{
+                  width: '2.75rem',
+                  height: '2.75rem',
+                  margin: '0 auto 1rem',
+                  borderRadius: '0.75rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(74,222,128,0.1)',
+                  border: '1px solid rgba(74,222,128,0.2)',
+                  color: '#4ADE80',
+                }}
+              >
+                <Icon size={22} strokeWidth={2} />
+              </div>
               <div
                 style={{
                   fontSize: 'clamp(2rem, 4vw, 3rem)',
@@ -135,7 +137,7 @@ export default function StatsCounter() {
         {stats && (
           <p
             style={{
-              color: '#475569',
+              color: '#94A3B8',
               fontSize: '0.75rem',
               marginTop: '1.5rem',
             }}

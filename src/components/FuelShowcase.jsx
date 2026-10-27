@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLanguage } from '../contexts/LanguageContext'
-import { ArrowRight, Loader2, RefreshCw, Zap } from 'lucide-react'
+import { ArrowRight, Loader2, RefreshCw } from 'lucide-react'
 
 const API_URL = 'https://api.apiaberta.pt/v1/fuel/prices'
 
@@ -63,28 +63,11 @@ export default function FuelShowcase() {
   }
 
   return (
-    <section style={{ background: 'linear-gradient(135deg, #0f172a 0%, #111827 100%)', padding: '6rem 0' }}>
+    <section style={{ background: 'linear-gradient(135deg, #0f172a 0%, #111827 100%)', padding: 'var(--section-y) 0' }}>
       <div style={{ maxWidth: '960px', margin: '0 auto', padding: '0 1.5rem' }}>
 
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              background: 'rgba(22, 163, 74, 0.12)',
-              border: '1px solid rgba(22, 163, 74, 0.3)',
-              borderRadius: '9999px',
-              padding: '0.25rem 0.875rem',
-              marginBottom: '1.25rem',
-            }}
-          >
-            <Zap size={13} style={{ color: '#4ade80' }} />
-            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#4ade80', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-              Live API
-            </span>
-          </div>
+        <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 800, color: '#f8fafc', marginBottom: '1rem', lineHeight: 1.2 }}>
             {labels.title}
           </h2>

@@ -11,13 +11,16 @@ export default function DeveloperCta() {
       aria-labelledby="developer-cta-heading"
       className="hero-pattern"
       style={{
-        padding: '3.5rem 1.5rem',
+        padding: '5rem 1.5rem',
         position: 'relative',
+        overflow: 'hidden',
       }}
     >
+      <div className="hero-grid" aria-hidden="true" />
+      <div className="hero-glow" aria-hidden="true" style={{ top: '-2rem', height: '20rem' }} />
       <div
         style={{
-          maxWidth: '640px',
+          maxWidth: '40rem',
           margin: '0 auto',
           textAlign: 'center',
           position: 'relative',
@@ -27,22 +30,22 @@ export default function DeveloperCta() {
         <h2
           id="developer-cta-heading"
           style={{
-            fontSize: 'clamp(1.25rem, 3vw, 1.75rem)',
+            fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
             fontWeight: 800,
             color: 'white',
-            letterSpacing: '-0.02em',
-            margin: '0 0 0.75rem',
-            lineHeight: 1.25,
+            letterSpacing: '-0.03em',
+            margin: '0 0 0.875rem',
+            lineHeight: 1.15,
           }}
         >
           {t('cta.bottom.title')}
         </h2>
         <p
           style={{
-            fontSize: '0.9375rem',
-            color: '#94A3B8',
+            fontSize: '1.0625rem',
+            color: '#A3B1C6',
             maxWidth: '32rem',
-            margin: '0 auto 1.5rem',
+            margin: '0 auto 2rem',
             lineHeight: 1.6,
           }}
         >
@@ -52,37 +55,10 @@ export default function DeveloperCta() {
           href={REGISTER_URL}
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            background: '#16A34A',
-            color: 'white',
-            padding: '0.75rem 1.5rem',
-            borderRadius: '0.5rem',
-            fontWeight: 700,
-            fontSize: '0.9375rem',
-            textDecoration: 'none',
-            transition: 'all 0.2s',
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.background = '#15803D'
-            e.currentTarget.style.transform = 'translateY(-2px)'
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.background = '#16A34A'
-            e.currentTarget.style.transform = 'translateY(0)'
-          }}
-          onFocus={(e) => {
-            e.currentTarget.style.outline = '2px solid #4ADE80'
-            e.currentTarget.style.outlineOffset = '3px'
-          }}
-          onBlur={(e) => {
-            e.currentTarget.style.outline = 'none'
-          }}
+          className="cta-primary"
         >
           {t('hero.cta.primary')}
-          <ArrowRight size={16} aria-hidden="true" />
+          <ArrowRight size={18} aria-hidden="true" />
         </a>
       </div>
     </section>
