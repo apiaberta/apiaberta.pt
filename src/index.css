@@ -122,3 +122,158 @@ body {
     radial-gradient(circle at 80% 20%, rgba(22, 163, 74, 0.1) 0%, transparent 40%),
     radial-gradient(circle at 60% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 40%);
 }
+
+/* ------------------------------------------------------------------ */
+/* Landing polish (better-design review): hierarchy, contrast, states */
+/* ------------------------------------------------------------------ */
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.section-title {
+  letter-spacing: -0.025em;
+}
+
+:focus-visible {
+  outline: 2px solid #4ADE80;
+  outline-offset: 3px;
+  border-radius: 0.25rem;
+}
+
+.card {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+/* Hover effects only on devices that really hover (no sticky hover on touch) */
+.card:hover {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    border-color: #CBD5E1;
+    box-shadow: 0 0.75rem 2rem -0.75rem rgba(15, 23, 42, 0.18);
+    transform: translateY(-2px);
+  }
+}
+
+/* Hero headline accent */
+.text-gradient {
+  background: linear-gradient(90deg, #4ADE80 0%, #22C55E 45%, #A3E635 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Soft light behind the hero copy */
+.hero-glow {
+  position: absolute;
+  left: 50%;
+  top: 4rem;
+  width: min(56rem, 120vw);
+  height: 28rem;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(34, 197, 94, 0.22), rgba(34, 197, 94, 0.06) 60%, transparent);
+  filter: blur(2.5rem);
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 3.75rem 3.75rem;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 40%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Hero / CTA buttons */
+.cta-primary,
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.625rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.cta-primary {
+  background: #16A34A;
+  border: 1px solid transparent;
+  color: white;
+  font-weight: 700;
+  box-shadow:
+    0 0 0 1px rgba(74, 222, 128, 0.35) inset,
+    0 0.5rem 1.5rem -0.5rem rgba(22, 163, 74, 0.65);
+}
+
+.cta-secondary {
+  background: rgba(255, 255, 255, 0.04);
+  color: white;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.cta-primary svg,
+.cta-secondary svg {
+  transition: transform 0.2s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cta-primary:hover {
+    background: #15803D;
+    box-shadow:
+      0 0 0 1px rgba(74, 222, 128, 0.45) inset,
+      0 0.75rem 2rem -0.5rem rgba(22, 163, 74, 0.75);
+  }
+  .cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  .cta-primary:hover svg,
+  .cta-secondary:hover svg {
+    transform: translateX(3px);
+  }
+}
+
+/* Hero proof row */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 4rem auto 0;
+  padding: 1.25rem 0;
+  max-width: 36rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-stats > div {
+  text-align: center;
+  padding: 0.25rem 0.5rem;
+}
+
+.hero-stats > div + div {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

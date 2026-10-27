@@ -4,6 +4,19 @@ import { useLanguage } from '../contexts/LanguageContext'
 const REGISTER_URL = 'https://app.apiaberta.pt/register'
 const DOCS_URL = 'https://docs.apiaberta.pt'
 
+// Highlight the last two words of the headline ("API moderna" / "modern API")
+function HighlightedHeadline({ text }) {
+  const words = text.split(' ')
+  if (words.length < 4) return text
+  const head = words.slice(0, -2).join(' ')
+  const tail = words.slice(-2).join(' ')
+  return (
+    <>
+      {head} <span className="text-gradient">{tail}</span>
+    </>
+  )
+}
+
 export default function Hero() {
   const { t } = useLanguage()
 
@@ -11,27 +24,19 @@ export default function Hero() {
     <section
       className="hero-pattern"
       style={{
-        paddingTop: '8rem',
-        paddingBottom: '6rem',
+        paddingTop: '8.5rem',
+        paddingBottom: '5rem',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* Decorative grid lines */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-          pointerEvents: 'none',
-        }}
-      />
+      {/* Decorative grid lines (faded at the edges) and soft glow */}
+      <div className="hero-grid" aria-hidden="true" />
+      <div className="hero-glow" aria-hidden="true" />
 
       <div
         style={{
-          maxWidth: '900px',
+          maxWidth: '60rem',
           margin: '0 auto',
           padding: '0 1.5rem',
           textAlign: 'center',
@@ -40,28 +45,30 @@ export default function Hero() {
         }}
       >
         {/* Badge */}
-        <div style={{ marginBottom: '1.5rem' }}>
+        <div style={{ marginBottom: '1.75rem' }}>
           <span
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.5rem',
-              background: 'rgba(22, 163, 74, 0.15)',
-              border: '1px solid rgba(22, 163, 74, 0.3)',
-              color: '#4ADE80',
-              padding: '0.375rem 1rem',
+              background: 'rgba(22, 163, 74, 0.12)',
+              border: '1px solid rgba(74, 222, 128, 0.25)',
+              color: '#86EFAC',
+              padding: '0.375rem 0.875rem',
               borderRadius: '9999px',
-              fontSize: '0.875rem',
+              fontSize: '0.8125rem',
               fontWeight: 600,
-              letterSpacing: '0.02em',
+              letterSpacing: '0.01em',
             }}
           >
             <span
+              aria-hidden="true"
               style={{
-                width: '6px',
-                height: '6px',
+                width: '0.375rem',
+                height: '0.375rem',
                 borderRadius: '50%',
                 background: '#4ADE80',
+                boxShadow: '0 0 0 0.25rem rgba(74, 222, 128, 0.18)',
                 display: 'inline-block',
               }}
             />
@@ -72,25 +79,26 @@ export default function Hero() {
         {/* Headline */}
         <h1
           style={{
-            fontSize: 'clamp(2rem, 5vw, 3.75rem)',
+            fontSize: 'clamp(2.25rem, 5.5vw, 4rem)',
             fontWeight: 900,
             color: 'white',
-            lineHeight: 1.1,
-            letterSpacing: '-0.03em',
-            marginBottom: '1.5rem',
+            lineHeight: 1.08,
+            letterSpacing: '-0.035em',
+            maxWidth: '18ch',
+            margin: '0 auto 1.5rem',
           }}
         >
-          {t('hero.headline')}
+          <HighlightedHeadline text={t('hero.headline')} />
         </h1>
 
         {/* Subheadline */}
         <p
           style={{
-            fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-            color: '#94A3B8',
-            maxWidth: '680px',
+            fontSize: 'clamp(1.0625rem, 2vw, 1.25rem)',
+            color: '#A3B1C6',
+            maxWidth: '40rem',
             margin: '0 auto 2.5rem',
-            lineHeight: 1.7,
+            lineHeight: 1.65,
           }}
         >
           {t('hero.subheadline')}
@@ -102,13 +110,13 @@ export default function Hero() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '0.875rem',
+            gap: '1rem',
           }}
         >
           <div
             style={{
               display: 'flex',
-              gap: '1rem',
+              gap: '0.875rem',
               justifyContent: 'center',
               flexWrap: 'wrap',
             }}
@@ -118,34 +126,7 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-describedby="hero-cta-supporting"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                background: '#16A34A',
-                color: 'white',
-                padding: '0.875rem 2rem',
-                borderRadius: '0.5rem',
-                fontWeight: 700,
-                fontSize: '1rem',
-                textDecoration: 'none',
-                transition: 'all 0.2s',
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.background = '#15803D'
-                e.currentTarget.style.transform = 'translateY(-2px)'
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.background = '#16A34A'
-                e.currentTarget.style.transform = 'translateY(0)'
-              }}
-              onFocus={(e) => {
-                e.currentTarget.style.outline = '2px solid #4ADE80'
-                e.currentTarget.style.outlineOffset = '3px'
-              }}
-              onBlur={(e) => {
-                e.currentTarget.style.outline = 'none'
-              }}
+              className="cta-primary"
             >
               {t('hero.cta.primary')}
               <ArrowRight size={18} aria-hidden="true" />
@@ -154,35 +135,7 @@ export default function Hero() {
               href={DOCS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                background: 'transparent',
-                color: 'white',
-                padding: '0.875rem 2rem',
-                borderRadius: '0.5rem',
-                fontWeight: 600,
-                fontSize: '1rem',
-                textDecoration: 'none',
-                border: '2px solid rgba(255,255,255,0.25)',
-                transition: 'all 0.2s',
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.6)'
-                e.currentTarget.style.transform = 'translateY(-2px)'
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'
-                e.currentTarget.style.transform = 'translateY(0)'
-              }}
-              onFocus={(e) => {
-                e.currentTarget.style.outline = '2px solid #4ADE80'
-                e.currentTarget.style.outlineOffset = '3px'
-              }}
-              onBlur={(e) => {
-                e.currentTarget.style.outline = 'none'
-              }}
+              className="cta-secondary"
             >
               {t('hero.cta.secondary')}
               <ArrowRight size={16} aria-hidden="true" />
@@ -203,23 +156,25 @@ export default function Hero() {
         </div>
 
         {/* Stats row */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '3rem',
-            marginTop: '4rem',
-            flexWrap: 'wrap',
-          }}
-        >
+        <div className="hero-stats">
           {[
             { value: '100%', label: 'Open Source' },
             { value: '0€', label: 'Para developers' },
             { value: 'REST', label: 'API moderna' },
           ].map((stat) => (
-            <div key={stat.value} style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '2rem', fontWeight: 900, color: '#4ADE80' }}>{stat.value}</div>
-              <div style={{ fontSize: '0.875rem', color: '#64748B', marginTop: '0.25rem' }}>{stat.label}</div>
+            <div key={stat.value}>
+              <div
+                style={{
+                  fontSize: '1.75rem',
+                  fontWeight: 800,
+                  letterSpacing: '-0.02em',
+                  color: '#4ADE80',
+                  lineHeight: 1.2,
+                }}
+              >
+                {stat.value}
+              </div>
+              <div style={{ fontSize: '0.8125rem', color: '#94A3B8', marginTop: '0.25rem' }}>{stat.label}</div>
             </div>
           ))}
         </div>
