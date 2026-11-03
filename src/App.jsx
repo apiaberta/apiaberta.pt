@@ -20,6 +20,9 @@ import SdkDocs from './pages/SdkDocs'
 import DadosGeo from './pages/DadosGeo'
 import Termos from './pages/Termos'
 import Privacidade from './pages/Privacidade'
+import Docs from './pages/Docs'
+import DocsEndpoints from './pages/DocsEndpoints'
+import DocsMcp from './pages/DocsMcp'
 
 export default function App() {
   return (
@@ -44,6 +47,9 @@ export default function App() {
               <Route path="/dados/taxas-juro" element={<DadosBdp />} />
               <Route path="/dados/geo" element={<DadosGeo />} />
               <Route path="/sdk" element={<SdkDocs />} />
+              <Route path="/docs" element={<Docs />} />
+              <Route path="/docs/endpoints" element={<DocsEndpoints />} />
+              <Route path="/docs/mcp" element={<DocsMcp />} />
               <Route path="/termos" element={<Termos />} />
               <Route path="/privacidade" element={<Privacidade />} />
             </Routes>

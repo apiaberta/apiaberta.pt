@@ -17,6 +17,13 @@ export default function Footer() {
     { key: 'geo', path: '/dados/geo' },
   ]
 
+  const docLinks = [
+    { label: 'Documentação', path: '/docs' },
+    { label: 'Endpoints', path: '/docs/endpoints' },
+    { label: 'MCP', path: '/docs/mcp' },
+    { label: 'SDKs', path: '/sdk' },
+  ]
+
   const links = [
     { label: t('footer.github'), href: 'https://github.com/apiaberta' },
     { label: t('footer.repo'), href: 'https://github.com/apiaberta/apiaberta' },
@@ -86,6 +93,36 @@ export default function Footer() {
                 {t(`footer.data.${item.key}`)}
               </Link>
             ))}
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <p style={{ fontSize: '0.8rem', color: '#475569', marginBottom: '0.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              Docs
+            </p>
+            {docLinks.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                style={{
+                  color: '#94A3B8',
+                  textDecoration: 'none',
+                  fontSize: '0.9rem',
+                  transition: 'color 0.15s',
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.color = '#4ADE80')}
+                onMouseOut={(e) => (e.currentTarget.style.color = '#94A3B8')}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <a
+              href="/llms.txt"
+              style={{ color: '#94A3B8', textDecoration: 'none', fontSize: '0.9rem' }}
+              onMouseOver={(e) => (e.currentTarget.style.color = '#4ADE80')}
+              onMouseOut={(e) => (e.currentTarget.style.color = '#94A3B8')}
+            >
+              llms.txt
+            </a>
           </div>
 
           {/* Links */}

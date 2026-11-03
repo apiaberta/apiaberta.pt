@@ -1,25 +1,151 @@
 # API Aberta
 
-> API REST unificada para dados públicos portugueses. Gratuita para developers e investigadores.
+> API REST unificada para dados públicos portugueses. Gratuita. Endpoints públicos sem autenticação.
 
-API Aberta disponibiliza dados públicos de Portugal numa API REST moderna e documentada. Todos os endpoints são gratuitos e não requerem autenticação para uso básico.
+Base URL: https://api.apiaberta.pt
+101 endpoints públicos catalogados a partir de GET /v1/status e do código dos conectores.
 
-## Dados disponíveis
+## Documentação (HTML e Markdown)
 
-- [Preços de Combustíveis](https://api.apiaberta.pt/v1/fuel/prices) — Preços DGEG actualizados diariamente para 14 tipos de combustível em todo o país
-- [Previsão do Tempo](https://api.apiaberta.pt/v1/ipma/forecast/1110600) — Previsões e avisos meteorológicos do IPMA
-- [Carregamento Eléctrico](https://api.apiaberta.pt/v1/ev/tariffs) — Tarifas dos operadores CEME e preços OMIE spot
-- [Contratos Públicos](https://api.apiaberta.pt/v1/base/contracts) — Contratos públicos do Portal Base
-- [Estatísticas de Portugal](https://api.apiaberta.pt/v1/ine/latest) — Indicadores do INE/Eurostat (PIB, população, desemprego)
-- [Protecção Civil](https://api.apiaberta.pt/v1/anpc/incidents/active) — Ocorrências activas da ANEPC
-- [Taxas de Juro](https://api.apiaberta.pt/v1/bdp/rates) — Taxas BCE, €STR e taxas de crédito do Banco de Portugal
+- [Documentação](https://apiaberta.pt/docs): índice para developers e LLMs
+- [Documentação (Markdown)](https://apiaberta.pt/docs.md)
+- [Endpoints](https://apiaberta.pt/docs/endpoints): catálogo completo
+- [Endpoints (Markdown)](https://apiaberta.pt/docs/endpoints.md)
+- [MCP](https://apiaberta.pt/docs/mcp): servidor MCP para Claude e Cursor
+- [MCP (Markdown)](https://apiaberta.pt/docs/mcp.md)
+- [SDKs](https://apiaberta.pt/sdk): JavaScript e Python
+- [SDKs (Markdown)](https://apiaberta.pt/sdk.md)
+- [Dados abertos](https://apiaberta.pt/dados)
+- [Dados abertos (Markdown)](https://apiaberta.pt/dados.md)
+- [Documentação completa](https://apiaberta.pt/llms-full.txt)
 
-## Documentação
+## Serviços públicos
 
-- [Documentação completa](https://apiaberta.pt)
-- [Portal do Developer](https://app.apiaberta.pt)
+- [Plataforma](https://api.apiaberta.pt/v1/status) — Estado da plataforma e estatísticas agregadas. Docs: https://apiaberta.pt/docs/endpoints.md#platform
+  - [GET /v1/status](https://api.apiaberta.pt/v1/status) — Estado de todos os conectores públicos (uptime, latência, versão).
+  - [GET /v1/stats](https://api.apiaberta.pt/v1/stats) — Estatísticas agregadas da plataforma.
+- [Preços de Combustíveis](https://api.apiaberta.pt/v1/fuel/meta) — Médias nacionais e preços por posto, actualizados diariamente às 07:30. Docs: https://apiaberta.pt/dados/combustivel.md
+  - [GET /v1/fuel/prices](https://api.apiaberta.pt/v1/fuel/prices) — Médias nacionais por tipo de combustível.
+  - [GET /v1/fuel/stations](https://api.apiaberta.pt/v1/fuel/stations) — Postos individuais com filtros.
+  - [GET /v1/fuel/cheapest](https://api.apiaberta.pt/v1/fuel/cheapest) — Postos mais baratos para um combustível.
+  - [GET /v1/fuel/meta](https://api.apiaberta.pt/v1/fuel/meta) — Metadados e estatísticas do conector.
+- [Meteorologia](https://api.apiaberta.pt/v1/ipma/meta) — Previsões, avisos e sismos. Previsões a cada 6h, avisos a cada 30 min. Docs: https://apiaberta.pt/dados/tempo.md
+  - [GET /v1/ipma/locations](https://api.apiaberta.pt/v1/ipma/locations) — Locais IPMA disponíveis (continente e ilhas).
+  - [GET /v1/ipma/forecasts](https://api.apiaberta.pt/v1/ipma/forecasts) — Previsão para todos os locais.
+  - [GET /v1/ipma/forecasts/:cityId](https://api.apiaberta.pt/v1/ipma/forecasts/x) — Previsão para um local (ex.: 1110600 = Lisboa).
+  - [GET /v1/ipma/warnings](https://api.apiaberta.pt/v1/ipma/warnings) — Avisos meteorológicos activos.
+  - [GET /v1/ipma/seismic](https://api.apiaberta.pt/v1/ipma/seismic) — Catálogo sísmico (janela por omissão: 30 dias).
+  - [GET /v1/ipma/seismic/latest](https://api.apiaberta.pt/v1/ipma/seismic/latest) — Último evento por região.
+  - [GET /v1/ipma/seismic/:id](https://api.apiaberta.pt/v1/ipma/seismic/x) — Um evento sísmico pelo id IPMA.
+  - [GET /v1/ipma/meta](https://api.apiaberta.pt/v1/ipma/meta) — Metadados do conector IPMA.
+- [Contratos Públicos](https://api.apiaberta.pt/v1/base/meta) — Contratos públicos. Alias: /v1/contracts aponta para o mesmo conector. Docs: https://apiaberta.pt/dados/contratos-publicos.md
+  - [GET /v1/base/contracts](https://api.apiaberta.pt/v1/base/contracts) — Contratos recentes, paginados.
+  - [GET /v1/base/contracts/search](https://api.apiaberta.pt/v1/base/contracts/search) — Pesquisa full-text.
+  - [GET /v1/base/contracts/lookup/:id](https://api.apiaberta.pt/v1/base/contracts/lookup/x) — Um contrato pelo id BASE.
+  - [GET /v1/base/meta](https://api.apiaberta.pt/v1/base/meta) — Metadados do conector BASE.
+- [Carregamento Eléctrico](https://api.apiaberta.pt/v1/ev/meta) — Tarifas CEME e preços spot OMIE. Docs: https://apiaberta.pt/dados/ev.md
+  - [GET /v1/ev/tariffs](https://api.apiaberta.pt/v1/ev/tariffs) — Tarifas CEME com preço actual.
+  - [GET /v1/ev/tariffs/cheapest](https://api.apiaberta.pt/v1/ev/tariffs/cheapest) — Ranking das tarifas mais baratas para um carregamento.
+  - [GET /v1/ev/omie/current](https://api.apiaberta.pt/v1/ev/omie/current) — Preço spot OMIE actual em Portugal.
+  - [GET /v1/ev/omie/today](https://api.apiaberta.pt/v1/ev/omie/today) — Preços OMIE de hoje (intervalos de 15 min).
+  - [GET /v1/ev/meta](https://api.apiaberta.pt/v1/ev/meta) — Metadados do conector EV.
+- [Estatísticas de Portugal](https://api.apiaberta.pt/v1/ine/meta) — PIB, população, desemprego, inflação. Série histórica desde 1960. Docs: https://apiaberta.pt/dados/estatisticas.md
+  - [GET /v1/ine/latest](https://api.apiaberta.pt/v1/ine/latest) — Último valor de cada indicador.
+  - [GET /v1/ine/stats](https://api.apiaberta.pt/v1/ine/stats) — Série temporal de um ou mais indicadores.
+  - [GET /v1/ine/indicators](https://api.apiaberta.pt/v1/ine/indicators) — Lista de indicadores disponíveis.
+  - [GET /v1/ine/meta](https://api.apiaberta.pt/v1/ine/meta) — Metadados do conector INE.
+- [Proteção Civil](https://api.apiaberta.pt/v1/anpc/meta) — Ocorrências, risco de incêndio, avisos e hotspots. Actualizado a cada 5 minutos. Docs: https://apiaberta.pt/dados/protecao-civil.md
+  - [GET /v1/anpc/incidents/active](https://api.apiaberta.pt/v1/anpc/incidents/active) — Ocorrências activas agora.
+  - [GET /v1/anpc/incidents](https://api.apiaberta.pt/v1/anpc/incidents) — Lista de ocorrências com filtros.
+  - [GET /v1/anpc/summary](https://api.apiaberta.pt/v1/anpc/summary) — Contagens de ocorrências activas por distrito.
+  - [GET /v1/anpc/risk](https://api.apiaberta.pt/v1/anpc/risk) — Risco de incêndio por distrito.
+  - [GET /v1/anpc/risk/:district](https://api.apiaberta.pt/v1/anpc/risk/x) — Risco de incêndio de um distrito.
+  - [GET /v1/anpc/warnings](https://api.apiaberta.pt/v1/anpc/warnings) — Avisos rodoviários / ANEPC.
+  - [GET /v1/anpc/hotspots](https://api.apiaberta.pt/v1/anpc/hotspots) — Hotspots de fogo detectados por satélite (via fogos.pt).
+  - [GET /v1/anpc/meta](https://api.apiaberta.pt/v1/anpc/meta) — Metadados do conector ANPC.
+- [Taxas de Juro](https://api.apiaberta.pt/v1/bdp/meta) — Taxas BCE, €STR e crédito em Portugal. Docs: https://apiaberta.pt/dados/taxas-juro.md
+  - [GET /v1/bdp/rates](https://api.apiaberta.pt/v1/bdp/rates) — Taxas-chave do BCE e €STR.
+  - [GET /v1/bdp/lending-rates](https://api.apiaberta.pt/v1/bdp/lending-rates) — Crédito à habitação, consumo e depósitos a prazo.
+  - [GET /v1/bdp/meta](https://api.apiaberta.pt/v1/bdp/meta) — Metadados e catálogo de séries.
+- [Dados Geográficos](https://api.apiaberta.pt/v1/geo/meta) — Distritos, municípios, freguesias e códigos postais. Docs: https://apiaberta.pt/dados/geo.md
+  - [GET /v1/geo/districts](https://api.apiaberta.pt/v1/geo/districts) — Lista de distritos.
+  - [GET /v1/geo/districts/:id](https://api.apiaberta.pt/v1/geo/districts/x) — Distrito pelo código INE.
+  - [GET /v1/geo/municipalities](https://api.apiaberta.pt/v1/geo/municipalities) — Municípios, com filtro por distrito.
+  - [GET /v1/geo/municipalities/:slug](https://api.apiaberta.pt/v1/geo/municipalities/x) — Município pelo slug.
+  - [GET /v1/geo/municipalities/:slug/parishes](https://api.apiaberta.pt/v1/geo/municipalities/x/parishes) — Freguesias de um município.
+  - [GET /v1/geo/parishes](https://api.apiaberta.pt/v1/geo/parishes) — Lista de freguesias.
+  - [GET /v1/geo/postal/:code](https://api.apiaberta.pt/v1/geo/postal/x) — Lookup de código postal (formato XXXX-XXX).
+  - [GET /v1/geo/meta](https://api.apiaberta.pt/v1/geo/meta) — Contagens e last_sync.
+- [Validador de NIF](https://api.apiaberta.pt/v1/nif/meta) — Validação de NIF português e lookup de empresa (VIES). Docs: https://apiaberta.pt/docs/endpoints.md#nif
+  - [GET /v1/nif/validate/:nif](https://api.apiaberta.pt/v1/nif/validate/x) — Valida um NIF (algoritmo MOD 11).
+  - [GET /v1/nif/:nif](https://api.apiaberta.pt/v1/nif/x) — Nome e morada da empresa (cache 30 dias).
+  - [GET /v1/nif/meta](https://api.apiaberta.pt/v1/nif/meta) — Metadados do conector NIF.
+- [PRR / PT2030](https://api.apiaberta.pt/v1/prr/meta) — Componentes, investimentos e resumo do PRR. /v1/pt2030 é o mesmo conector. Docs: https://apiaberta.pt/docs/endpoints.md#prr
+  - [GET /v1/prr/components](https://api.apiaberta.pt/v1/prr/components) — Componentes e investimentos do PRR.
+  - [GET /v1/prr/summary](https://api.apiaberta.pt/v1/prr/summary) — Resumo estatístico do PRR.
+  - [GET /v1/prr/projects](https://api.apiaberta.pt/v1/prr/projects) — Pesquisa de investimentos PRR.
+  - [GET /v1/pt2030/summary](https://api.apiaberta.pt/v1/pt2030/summary) — Resumo do Portugal 2030.
+  - [GET /v1/prr/meta](https://api.apiaberta.pt/v1/prr/meta) — Metadados do conector PRR.
+- [Legislação (DRE)](https://api.apiaberta.pt/v1/dre/meta) — Séries, tipos e pesquisa no Diário da República. Docs: https://apiaberta.pt/docs/endpoints.md#dre
+  - [GET /v1/dre/series](https://api.apiaberta.pt/v1/dre/series) — Séries do DRE (I, II, III, I-A).
+  - [GET /v1/dre/types](https://api.apiaberta.pt/v1/dre/types) — Tipos de diploma (lei, decreto-lei, portaria, …).
+  - [GET /v1/dre/search](https://api.apiaberta.pt/v1/dre/search) — Pesquisa no DRE (proxy).
+  - [GET /v1/dre/latest](https://api.apiaberta.pt/v1/dre/latest) — Publicações mais recentes (I Série).
+  - [GET /v1/dre/legislation](https://api.apiaberta.pt/v1/dre/legislation) — Lista recente de legislação.
+  - [GET /v1/dre/meta](https://api.apiaberta.pt/v1/dre/meta) — Metadados do conector DRE.
+- [Fogos (NASA FIRMS)](https://api.apiaberta.pt/v1/nasafirms/meta) — Hotspots VIIRS/MODIS em Portugal. Docs: https://apiaberta.pt/docs/endpoints.md#nasafirms
+  - [GET /v1/nasafirms/hotspots](https://api.apiaberta.pt/v1/nasafirms/hotspots) — Hotspots de fogo (últimos N dias).
+  - [GET /v1/nasafirms/hotspots/count](https://api.apiaberta.pt/v1/nasafirms/hotspots/count) — Contagem de hotspots.
+  - [GET /v1/nasafirms/sources](https://api.apiaberta.pt/v1/nasafirms/sources) — Fontes de satélite disponíveis.
+  - [GET /v1/nasafirms/meta](https://api.apiaberta.pt/v1/nasafirms/meta) — Metadados do conector NASA FIRMS.
+- [Carris Metropolitana](https://api.apiaberta.pt/v1/carris/meta) — Veículos em tempo real, paragens, linhas e alertas. Docs: https://apiaberta.pt/docs/endpoints.md#carris
+  - [GET /v1/carris/vehicles](https://api.apiaberta.pt/v1/carris/vehicles) — Veículos em tempo real.
+  - [GET /v1/carris/vehicles/:id](https://api.apiaberta.pt/v1/carris/vehicles/x) — Um veículo.
+  - [GET /v1/carris/alerts](https://api.apiaberta.pt/v1/carris/alerts) — Alertas de serviço.
+  - [GET /v1/carris/stops](https://api.apiaberta.pt/v1/carris/stops) — Paragens.
+  - [GET /v1/carris/stops/:id](https://api.apiaberta.pt/v1/carris/stops/x) — Uma paragem.
+  - [GET /v1/carris/stops/:id/arrivals](https://api.apiaberta.pt/v1/carris/stops/x/arrivals) — Chegadas previstas a uma paragem.
+  - [GET /v1/carris/lines](https://api.apiaberta.pt/v1/carris/lines) — Linhas.
+  - [GET /v1/carris/lines/:id](https://api.apiaberta.pt/v1/carris/lines/x) — Uma linha.
+  - [GET /v1/carris/meta](https://api.apiaberta.pt/v1/carris/meta) — Metadados do conector Carris.
+- [Horários (GTFS)](https://api.apiaberta.pt/v1/gtfs/meta) — Feeds GTFS unificados de operadores portugueses. Janela de 2 dias. Docs: https://apiaberta.pt/docs/endpoints.md#gtfs
+  - [GET /v1/gtfs/feeds](https://api.apiaberta.pt/v1/gtfs/feeds) — Feeds configurados e estado de ingestão.
+  - [GET /v1/gtfs/feeds/:feed_id](https://api.apiaberta.pt/v1/gtfs/feeds/x) — Um feed e os últimos diffs.
+  - [GET /v1/gtfs/changes](https://api.apiaberta.pt/v1/gtfs/changes) — Diffs de stops/routes/trips.
+  - [GET /v1/gtfs/routes](https://api.apiaberta.pt/v1/gtfs/routes) — Rotas.
+  - [GET /v1/gtfs/routes/:feed_id/:route_id](https://api.apiaberta.pt/v1/gtfs/routes/x/x) — Uma rota, paragens e trips de hoje.
+  - [GET /v1/gtfs/stops](https://api.apiaberta.pt/v1/gtfs/stops) — Paragens.
+  - [GET /v1/gtfs/stops/:feed_id/:stop_id](https://api.apiaberta.pt/v1/gtfs/stops/x/x) — Uma paragem.
+  - [GET /v1/gtfs/stops/:feed_id/:stop_id/departures](https://api.apiaberta.pt/v1/gtfs/stops/x/x/departures) — Partidas de uma paragem.
+  - [GET /v1/gtfs/departures/near](https://api.apiaberta.pt/v1/gtfs/departures/near) — Partidas perto de um ponto.
+  - [GET /v1/gtfs/meta](https://api.apiaberta.pt/v1/gtfs/meta) — Metadados do conector GTFS.
+- [Parlamento](https://api.apiaberta.pt/v1/parlamento/meta) — Iniciativas, votações, deputados, grupos e petições. Docs: https://apiaberta.pt/docs/endpoints.md#parlamento
+  - [GET /v1/parlamento/legislaturas](https://api.apiaberta.pt/v1/parlamento/legislaturas) — Legislaturas conhecidas e estado de sync.
+  - [GET /v1/parlamento/iniciativas](https://api.apiaberta.pt/v1/parlamento/iniciativas) — Iniciativas parlamentares.
+  - [GET /v1/parlamento/iniciativas/:ini_id](https://api.apiaberta.pt/v1/parlamento/iniciativas/x) — Uma iniciativa.
+  - [GET /v1/parlamento/votacoes](https://api.apiaberta.pt/v1/parlamento/votacoes) — Votações.
+  - [GET /v1/parlamento/votacoes/:vot_id](https://api.apiaberta.pt/v1/parlamento/votacoes/x) — Uma votação.
+  - [GET /v1/parlamento/deputados](https://api.apiaberta.pt/v1/parlamento/deputados) — Deputados da legislatura corrente.
+  - [GET /v1/parlamento/deputados/:dep_id](https://api.apiaberta.pt/v1/parlamento/deputados/x) — Um deputado.
+  - [GET /v1/parlamento/grupos](https://api.apiaberta.pt/v1/parlamento/grupos) — Grupos parlamentares.
+  - [GET /v1/parlamento/peticoes](https://api.apiaberta.pt/v1/parlamento/peticoes) — Petições.
+  - [GET /v1/parlamento/peticoes/:pet_id](https://api.apiaberta.pt/v1/parlamento/peticoes/x) — Uma petição.
+  - [GET /v1/parlamento/meta](https://api.apiaberta.pt/v1/parlamento/meta) — Metadados do conector Parlamento.
+- [SNS Transparência](https://api.apiaberta.pt/v1/sns/meta) — Urgências, cirurgia, consultas e recursos humanos (mensal). Docs: https://apiaberta.pt/docs/endpoints.md#sns
+  - [GET /v1/sns/datasets](https://api.apiaberta.pt/v1/sns/datasets) — Datasets curados e estado de sync.
+  - [GET /v1/sns/entidades](https://api.apiaberta.pt/v1/sns/entidades) — Entidades de saúde.
+  - [GET /v1/sns/entidades/:slug](https://api.apiaberta.pt/v1/sns/entidades/x) — Uma entidade pelo slug.
+  - [GET /v1/sns/:dataset](https://api.apiaberta.pt/v1/sns/x) — Registos mensais de um dataset (urgencias, cirurgia_tmrg, consultas_hospitalares, rh, …).
+  - [GET /v1/sns/:dataset/latest](https://api.apiaberta.pt/v1/sns/x/latest) — Último período de um dataset.
+  - [GET /v1/sns/:dataset/national](https://api.apiaberta.pt/v1/sns/x/national) — Agregado nacional de um dataset.
+  - [GET /v1/sns/meta](https://api.apiaberta.pt/v1/sns/meta) — Metadados do conector SNS.
+
+## Ligações
+
+- [Portal do developer](https://app.apiaberta.pt)
 - [Estado dos serviços](https://status.apiaberta.pt)
 - [GitHub](https://github.com/apiaberta)
+- [MCP no repositório](https://github.com/apiaberta/apiaberta.pt/tree/main/mcp)
 
 ## Licença
 

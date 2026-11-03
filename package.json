@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "docs:llms": "node scripts/generate-llm-docs.js",
+    "build": "node scripts/generate-llm-docs.js && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
