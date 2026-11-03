@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Sitemap: https://apiaberta.pt/sitemap.xml
+# LLM index: https://apiaberta.pt/llms.txt
 
 User-agent: GPTBot
 Allow: /

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Cloud, Fuel, FileText, Zap, ArrowRight, ArrowLeft, Database, BarChart2, ShieldAlert, TrendingUp } from 'lucide-react'
+import CopyForLlm from '../components/CopyForLlm'
 
 const CATEGORIES = [
   {
@@ -125,9 +126,13 @@ export default function Dados() {
               Dados Abertos
             </h1>
           </div>
-          <p style={{ color: '#94A3B8', fontSize: '1.0625rem', lineHeight: 1.7 }}>
+          <p style={{ color: '#94A3B8', fontSize: '1.0625rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>
             Acesso directo a dados públicos portugueses, em formato legível por humanos e máquinas.
           </p>
+          <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <CopyForLlm />
+            <a href="/dados.md" style={{ color: '#94A3B8', fontSize: '0.875rem', alignSelf: 'center' }}>dados.md</a>
+          </div>
         </div>
       </div>
 
@@ -216,16 +221,14 @@ export default function Dados() {
               Todos estes dados estão disponíveis em JSON via <code style={{ color: '#4ADE80' }}>api.apiaberta.pt</code>
             </p>
           </div>
-          <a
-            href="https://api.apiaberta.pt/docs"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/docs/endpoints"
             className="btn-primary"
             style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}
           >
-            Ver documentação
+            Ver endpoints
             <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
       </div>
 

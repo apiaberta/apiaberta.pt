@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft, Code, Terminal, Package, Zap, CheckCircle } from 'lucide-react'
+import CopyForLlm from '../components/CopyForLlm'
 
 const JS_EXAMPLES = {
   install: `npm install apiaberta-js`,
@@ -149,6 +150,8 @@ export default function SdkDocs() {
             Integra dados públicos portugueses em minutos — com SDK oficial para JavaScript e Python.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <CopyForLlm compact />
+            <a href="/sdk.md" style={{ color: '#94A3B8', fontSize: '0.875rem', alignSelf: 'center' }}>sdk.md</a>
             <a href="https://github.com/apiaberta/apiaberta-js" target="_blank" rel="noreferrer"
               style={{ background: '#1E293B', color: '#E2E8F0', border: '1px solid #334155', borderRadius: '0.5rem', padding: '0.5rem 1.25rem', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 600 }}>
               📦 apiaberta-js

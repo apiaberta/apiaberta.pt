@@ -11,5 +11,12 @@
   <url><loc>https://apiaberta.pt/dados/taxas-juro</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
   <url><loc>https://apiaberta.pt/dados/geo</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://apiaberta.pt/sdk</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://apiaberta.pt/docs</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://apiaberta.pt/docs/endpoints</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://apiaberta.pt/docs/mcp</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://apiaberta.pt/docs.md</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://apiaberta.pt/docs/endpoints.md</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://apiaberta.pt/llms.txt</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://apiaberta.pt/llms-full.txt</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
   <url><loc>https://apiaberta.pt/changelog</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
 </urlset>
