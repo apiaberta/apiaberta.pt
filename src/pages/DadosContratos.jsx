@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import {
   FileText, ArrowLeft, Search, X, ChevronRight,
   MapPin, Calendar, Tag, Building2, User, Gavel,
-  TrendingUp, Clock, Award, Globe
+  TrendingUp, Clock, Award, Globe, RefreshCw
 } from 'lucide-react'
 
 const API_SEARCH  = 'https://api.apiaberta.pt/v1/base/contracts/search'
