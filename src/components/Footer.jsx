@@ -207,6 +207,19 @@ export default function Footer() {
             >
               Privacidade
             </Link>
+            <a
+              href="https://hicyou.com"
+              target="_blank"
+              rel="dofollow noopener"
+              style={{ display: 'inline-flex', alignItems: 'center' }}
+            >
+              <img
+                src="https://hicyou.com/badge/featured-dark.svg"
+                alt="Featured on HiCyou"
+                height={40}
+                style={{ height: 40, width: 'auto' }}
+              />
+            </a>
           </div>
           <p style={{ fontSize: '0.875rem', color: '#475569' }}>
             {t('footer.built')}
