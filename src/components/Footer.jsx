@@ -1,4 +1,4 @@
-import { Code2, Github, List } from 'lucide-react'
+import { BarChart3, Code2, Github, List } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 import LanguageSwitcher from './LanguageSwitcher'
@@ -165,6 +165,23 @@ export default function Footer() {
             >
               <List size={14} />
               {t('footer.changelog')}
+            </Link>
+            <Link
+              to="/dados/estatisticas"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.375rem',
+                color: '#94A3B8',
+                textDecoration: 'none',
+                fontSize: '0.9rem',
+                transition: 'color 0.15s',
+              }}
+              onMouseOver={(e) => (e.currentTarget.style.color = '#4ADE80')}
+              onMouseOut={(e) => (e.currentTarget.style.color = '#94A3B8')}
+            >
+              <BarChart3 size={14} />
+              {t('footer.stats')}
             </Link>
           </div>
 

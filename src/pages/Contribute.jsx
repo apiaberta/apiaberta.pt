@@ -257,7 +257,7 @@ export interface Connector {
             }}
           >
             <Github size={18} />
-            {t('nav.cta')}
+            {t('contribute.cta')}
           </a>
         </div>
       </div>

@@ -173,9 +173,6 @@ export default function Navbar() {
                 </div>
               )}
             </div>
-            <Link to="/docs" className="nav-link" style={{ textDecoration: 'none' }}>
-              Docs
-            </Link>
             <button onClick={() => scrollTo('problem')} className="nav-link">
               {t('nav.problem')}
             </button>
@@ -194,7 +191,7 @@ export default function Navbar() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <LanguageSwitcher />
             <a
-              href="https://github.com/apiaberta"
+              href="https://app.apiaberta.pt/register"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
@@ -277,19 +274,6 @@ export default function Navbar() {
                 ))}
               </div>
             )}
-            <Link
-              to="/docs"
-              onClick={() => setMenuOpen(false)}
-              style={{
-                padding: '0.625rem 0.5rem',
-                fontSize: '1rem',
-                fontWeight: 500,
-                color: '#334155',
-                textDecoration: 'none',
-              }}
-            >
-              Docs
-            </Link>
             {[
               ['problem', t('nav.problem')],
               ['solution', t('nav.solution')],
@@ -315,7 +299,7 @@ export default function Navbar() {
               </button>
             ))}
             <a
-              href="https://github.com/apiaberta"
+              href="https://app.apiaberta.pt/register"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
