@@ -191,7 +191,7 @@ export default function Navbar() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <LanguageSwitcher />
             <a
-              href="https://app.apiaberta.pt/register"
+              href="https://app.apiaberta.pt/"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
@@ -299,7 +299,7 @@ export default function Navbar() {
               </button>
             ))}
             <a
-              href="https://app.apiaberta.pt/register"
+              href="https://app.apiaberta.pt/"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
