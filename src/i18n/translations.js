@@ -5,7 +5,7 @@ const translations = {
     'nav.solution': 'Solução',
     'nav.contribute': 'Contribuir',
     'nav.contact': 'Contacto',
-    'nav.cta': 'Quero Contribuir',
+    'nav.cta': 'Criar conta',
 
     // Hero
     'hero.headline': 'Os dados públicos portugueses merecem uma API moderna',
@@ -136,6 +136,7 @@ const translations = {
     'footer.data': 'Dados',
     'footer.language': 'Idioma',
     'footer.changelog': 'Changelog',
+    'footer.stats': 'Estatísticas',
     'footer.data.fuel': 'Combustíveis',
     'footer.data.weather': 'Meteorologia',
     'footer.data.ev': 'Carregamento EV',
@@ -168,6 +169,7 @@ const translations = {
     'contribute.docs.item3': 'Traduzir conteúdo',
     'contribute.docs.item4': 'Reportar erros ou inconsistências',
     'contribute.back': 'Voltar ao início',
+    'contribute.cta': 'Quero contribuir',
 
     // Language
     'lang.pt': 'PT',
@@ -180,7 +182,7 @@ const translations = {
     'nav.solution': 'Solution',
     'nav.contribute': 'Contribute',
     'nav.contact': 'Contact',
-    'nav.cta': 'I Want to Contribute',
+    'nav.cta': 'Create account',
 
     // Hero
     'hero.headline': 'Portuguese public data deserves a modern API',
@@ -311,6 +313,7 @@ const translations = {
     'footer.data': 'Data',
     'footer.language': 'Language',
     'footer.changelog': 'Changelog',
+    'footer.stats': 'Stats',
     'footer.data.fuel': 'Fuel Prices',
     'footer.data.weather': 'Weather',
     'footer.data.ev': 'EV Charging',
@@ -343,6 +346,7 @@ const translations = {
     'contribute.docs.item3': 'Translating content',
     'contribute.docs.item4': 'Reporting errors or inconsistencies',
     'contribute.back': 'Back to home',
+    'contribute.cta': 'I want to contribute',
 
     // Language
     'lang.pt': 'PT',
